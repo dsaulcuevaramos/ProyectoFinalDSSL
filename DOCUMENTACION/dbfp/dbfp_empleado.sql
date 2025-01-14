@@ -1,8 +1,8 @@
--- MySQL dump 10.13  Distrib 8.0.38, for Win64 (x86_64)
+-- MySQL dump 10.13  Distrib 8.0.34, for Win64 (x86_64)
 --
--- Host: 127.0.0.1    Database: bdpf
+-- Host: 127.0.0.1    Database: dbfp
 -- ------------------------------------------------------
--- Server version	9.0.1
+-- Server version	8.0.35
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -16,29 +16,35 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `servicio`
+-- Table structure for table `empleado`
 --
 
-DROP TABLE IF EXISTS `servicio`;
+DROP TABLE IF EXISTS `empleado`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `servicio` (
-  `idservicio` int NOT NULL AUTO_INCREMENT,
-  `nombre` varchar(45) DEFAULT NULL,
-  `descripcion` varchar(45) DEFAULT NULL,
-  `costo` varchar(45) DEFAULT NULL,
-  `idempleado` int DEFAULT NULL,
-  PRIMARY KEY (`idservicio`)
+CREATE TABLE `empleado` (
+  `idempleado` int NOT NULL AUTO_INCREMENT,
+  ` nombres` varchar(45) DEFAULT NULL,
+  `apellidos` varchar(45) DEFAULT NULL,
+  `dni` varchar(8) DEFAULT NULL,
+  `edad` int DEFAULT NULL,
+  `telefono` varchar(9) DEFAULT NULL,
+  `correo` varchar(45) DEFAULT NULL,
+  `estado` tinyint(1) DEFAULT NULL,
+  `idrol` int DEFAULT NULL,
+  PRIMARY KEY (`idempleado`),
+  KEY `fk_empleado_rol_idx` (`idrol`),
+  CONSTRAINT `fk_empleado_rol` FOREIGN KEY (`idrol`) REFERENCES `rol` (`idrol`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `servicio`
+-- Dumping data for table `empleado`
 --
 
-LOCK TABLES `servicio` WRITE;
-/*!40000 ALTER TABLE `servicio` DISABLE KEYS */;
-/*!40000 ALTER TABLE `servicio` ENABLE KEYS */;
+LOCK TABLES `empleado` WRITE;
+/*!40000 ALTER TABLE `empleado` DISABLE KEYS */;
+/*!40000 ALTER TABLE `empleado` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -50,4 +56,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2025-01-06 20:02:22
+-- Dump completed on 2025-01-09  9:15:31

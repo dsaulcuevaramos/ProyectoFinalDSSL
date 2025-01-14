@@ -1,8 +1,8 @@
--- MySQL dump 10.13  Distrib 8.0.38, for Win64 (x86_64)
+-- MySQL dump 10.13  Distrib 8.0.34, for Win64 (x86_64)
 --
--- Host: 127.0.0.1    Database: bdpf
+-- Host: 127.0.0.1    Database: dbfp
 -- ------------------------------------------------------
--- Server version	9.0.1
+-- Server version	8.0.35
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -16,28 +16,36 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `tipoempleado`
+-- Table structure for table `factura_producto`
 --
 
-DROP TABLE IF EXISTS `tipoempleado`;
+DROP TABLE IF EXISTS `factura_producto`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `tipoempleado` (
-  `idtipoempleado` int NOT NULL,
-  `nombre` varchar(45) DEFAULT NULL,
-  `descripcion` varchar(45) DEFAULT NULL,
-  `sueldo` varchar(45) DEFAULT NULL,
-  PRIMARY KEY (`idtipoempleado`)
+CREATE TABLE `factura_producto` (
+  `idfactura` int NOT NULL,
+  `cantidad` int DEFAULT NULL,
+  `preciounitario` double DEFAULT NULL,
+  `total` double DEFAULT NULL,
+  `idproducto` int NOT NULL,
+  `idusuario` int DEFAULT NULL,
+  PRIMARY KEY (`idfactura`,`idproducto`),
+  KEY `fk_detalleprod_factura_idx` (`idfactura`),
+  KEY `fk_producto_factura_idx` (`idproducto`),
+  KEY `fk_poducto_usuario_idx` (`idusuario`),
+  CONSTRAINT `fk_detalleprod_factura` FOREIGN KEY (`idfactura`) REFERENCES `factura` (`idfactura`),
+  CONSTRAINT `fk_poducto_usuario` FOREIGN KEY (`idusuario`) REFERENCES `usuario` (`idusuario`),
+  CONSTRAINT `fk_producto_factura` FOREIGN KEY (`idproducto`) REFERENCES `producto` (`idproducto`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `tipoempleado`
+-- Dumping data for table `factura_producto`
 --
 
-LOCK TABLES `tipoempleado` WRITE;
-/*!40000 ALTER TABLE `tipoempleado` DISABLE KEYS */;
-/*!40000 ALTER TABLE `tipoempleado` ENABLE KEYS */;
+LOCK TABLES `factura_producto` WRITE;
+/*!40000 ALTER TABLE `factura_producto` DISABLE KEYS */;
+/*!40000 ALTER TABLE `factura_producto` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -49,4 +57,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2025-01-06 20:02:21
+-- Dump completed on 2025-01-09  9:15:31

@@ -1,8 +1,8 @@
--- MySQL dump 10.13  Distrib 8.0.38, for Win64 (x86_64)
+-- MySQL dump 10.13  Distrib 8.0.34, for Win64 (x86_64)
 --
--- Host: 127.0.0.1    Database: bdpf
+-- Host: 127.0.0.1    Database: dbfp
 -- ------------------------------------------------------
--- Server version	9.0.1
+-- Server version	8.0.35
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -16,34 +16,32 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `empleado`
+-- Table structure for table `vehiculo`
 --
 
-DROP TABLE IF EXISTS `empleado`;
+DROP TABLE IF EXISTS `vehiculo`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `empleado` (
-  `idempleado` int NOT NULL AUTO_INCREMENT,
-  `nombre` varchar(45) DEFAULT NULL,
-  `apellido` varchar(45) DEFAULT NULL,
-  `dni` varchar(45) DEFAULT NULL,
-  `telefono` varchar(45) DEFAULT NULL,
-  `correo` varchar(45) DEFAULT NULL,
-  `tipo` int DEFAULT NULL,
+CREATE TABLE `vehiculo` (
+  `idvehiculo` int NOT NULL AUTO_INCREMENT,
+  `placa` varchar(7) DEFAULT NULL,
+  `marca` varchar(45) DEFAULT NULL,
+  `modelo` varchar(45) DEFAULT NULL,
   `estado` tinyint(1) DEFAULT NULL,
-  PRIMARY KEY (`idempleado`),
-  KEY `fk_empleadotipo_idx` (`tipo`),
-  CONSTRAINT `fk_empleadotipo` FOREIGN KEY (`tipo`) REFERENCES `tipoempleado` (`idtipoempleado`)
+  `idcliente` int DEFAULT NULL,
+  PRIMARY KEY (`idvehiculo`),
+  KEY `fk_vehiculo_cliente_idx` (`idcliente`),
+  CONSTRAINT `fk_vehiculo_cliente` FOREIGN KEY (`idcliente`) REFERENCES `cliente` (`idcliente`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `empleado`
+-- Dumping data for table `vehiculo`
 --
 
-LOCK TABLES `empleado` WRITE;
-/*!40000 ALTER TABLE `empleado` DISABLE KEYS */;
-/*!40000 ALTER TABLE `empleado` ENABLE KEYS */;
+LOCK TABLES `vehiculo` WRITE;
+/*!40000 ALTER TABLE `vehiculo` DISABLE KEYS */;
+/*!40000 ALTER TABLE `vehiculo` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -55,4 +53,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2025-01-06 20:02:22
+-- Dump completed on 2025-01-09  9:15:32

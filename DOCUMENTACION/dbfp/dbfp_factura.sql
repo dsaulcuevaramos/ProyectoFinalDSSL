@@ -1,8 +1,8 @@
--- MySQL dump 10.13  Distrib 8.0.38, for Win64 (x86_64)
+-- MySQL dump 10.13  Distrib 8.0.34, for Win64 (x86_64)
 --
--- Host: 127.0.0.1    Database: bdpf
+-- Host: 127.0.0.1    Database: dbfp
 -- ------------------------------------------------------
--- Server version	9.0.1
+-- Server version	8.0.35
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -16,31 +16,29 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `reportes`
+-- Table structure for table `factura`
 --
 
-DROP TABLE IF EXISTS `reportes`;
+DROP TABLE IF EXISTS `factura`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `reportes` (
-  `idreportes` int NOT NULL AUTO_INCREMENT,
-  `idboleta` int DEFAULT NULL,
-  `idempleado` int DEFAULT NULL,
-  PRIMARY KEY (`idreportes`),
-  KEY `fk_boletareportes_idx` (`idboleta`),
-  KEY `fk_empleadoreportes_idx` (`idempleado`),
-  CONSTRAINT `fk_boletareportes` FOREIGN KEY (`idboleta`) REFERENCES `boleta` (`idboleta`),
-  CONSTRAINT `fk_empleadoreportes` FOREIGN KEY (`idempleado`) REFERENCES `empleado` (`idempleado`)
+CREATE TABLE `factura` (
+  `idfactura` int NOT NULL AUTO_INCREMENT,
+  `fecha` varchar(45) DEFAULT NULL,
+  `idcliente` int DEFAULT NULL,
+  PRIMARY KEY (`idfactura`),
+  KEY `fk_factura_cliente_idx` (`idcliente`),
+  CONSTRAINT `fk_factura_cliente` FOREIGN KEY (`idcliente`) REFERENCES `cliente` (`idcliente`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `reportes`
+-- Dumping data for table `factura`
 --
 
-LOCK TABLES `reportes` WRITE;
-/*!40000 ALTER TABLE `reportes` DISABLE KEYS */;
-/*!40000 ALTER TABLE `reportes` ENABLE KEYS */;
+LOCK TABLES `factura` WRITE;
+/*!40000 ALTER TABLE `factura` DISABLE KEYS */;
+/*!40000 ALTER TABLE `factura` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -52,4 +50,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2025-01-06 20:02:21
+-- Dump completed on 2025-01-09  9:15:32
