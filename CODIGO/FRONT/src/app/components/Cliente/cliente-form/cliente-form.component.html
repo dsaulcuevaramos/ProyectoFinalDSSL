@@ -1,0 +1,38 @@
+<div class="modal-header">
+    <h4 class="modal-title">{{ isEditMode ? 'Edit Ciente' : 'Add New Ciente' }}</h4>
+    <button type="button" class="btn-close" aria-label="Close" (click)="activeModal.dismiss()"></button>
+</div>
+<div class="modal-body">
+    <form [formGroup]="clienteForm" (ngSubmit)="onSubmit()">
+        <div class="mb-3">
+            <label for="nombres" class="form-label">Nombres</label>
+            <input type="text" class="form-control" id="nombres" formControlName="nombres"
+                [ngClass]="{'is-invalid': submitted && f['nombres'].errors}">
+            <div *ngIf="submitted && f['nombres'].errors" class="invalid-feedback">
+                Nombre is required
+            </div>
+        </div>
+        <div class="mb-3">
+            <label for="apellidos" class="form-label">Apellidos</label>
+            <input type="text" class="form-control" id="apellidos" formControlName="apellidos"
+                [ngClass]="{'is-invalid': submitted && f['apellidos'].errors}">
+            <div *ngIf="submitted && f['apellidos'].errors" class="invalid-feedback">
+                Precio is required
+            </div>
+        </div>
+        <div class="mb-3">
+            <label for="dni" class="form-label">Dni</label>
+            <input type="text" class="form-control" id="dni" formControlName="dni"
+                [ngClass]="{'is-invalid': submitted && f['dni'].errors}">
+            <div *ngIf="submitted && f['dni'].errors" class="invalid-feedback">
+                Precio is required
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" (click)="activeModal.dismiss()">Cancel</button>
+            <button type="submit" class="btn btn-primary">
+                {{ isEditMode ? 'Update Ciente' : 'Save Ciente' }}
+            </button>
+        </div>
+    </form>
+</div>

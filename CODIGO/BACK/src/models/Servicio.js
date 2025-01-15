@@ -4,12 +4,12 @@ class Servicio{
 
     static tableName = 'servicio';
 
-    constructor (id,descripcion,costo,idEmpleado){
+    constructor (id,descripcion,costo,usuario){
          this.id = id;  
          this.nombre = nombre;
          this.descripcion = descripcion;
          this.costo = costo;
-         this.idEmpleado = idEmpleado;
+         this.usuario = usuario;
     }
 }
 

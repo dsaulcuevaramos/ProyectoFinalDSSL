@@ -1,0 +1,33 @@
+<app-header></app-header>
+<br>
+<div class="container">
+  
+    <h3>Agregar un nuevo Usuario</h3>
+    <button class="btn btn-primary mb-3" (click)="openModal()">Add New Usuario</button>
+
+    <p>Listado de Usuarios</p>
+    <table class="table">
+        <thead class="thead table-dark">
+            <tr>
+                <th>username</th>
+                <th>password</th>
+                <th>empleado</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let temp of usuarios">
+                <td>{{temp.username}}</td>
+                <td>{{temp.password}}</td>
+                <td>{{temp.empleado}}</td>
+                <td> <button class="btn btn-warning" (click)="openModal(temp)">Editar </button> &nbsp;
+                    <button class="btn btn-danger" (click)="delete(temp.id)">Eliminar </button>
+                </td>
+
+            </tr>
+        </tbody>
+    </table>
+
+    
+
+</div>

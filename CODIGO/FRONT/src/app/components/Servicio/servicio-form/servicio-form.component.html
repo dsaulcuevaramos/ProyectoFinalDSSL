@@ -1,0 +1,43 @@
+<div class="modal-header">
+    <h4 class="modal-title">{{ isEditMode ? 'Edit Servicio' : 'Add New Servicio' }}</h4>
+    <button type="button" class="btn-close" aria-label="Close" (click)="activeModal.dismiss()"></button>
+</div>
+<div class="modal-body">
+    <form [formGroup]="servicioForm" (ngSubmit)="onSubmit()">
+        <div class="mb-3">
+            <label for="descripcion" class="form-label">Descripcion</label>
+            <textarea type="text" class="form-control" id="descripcion" formControlName="descripcion"
+                rows="3" cols="40"
+                [ngClass]="{'is-invalid': submitted && f['descripcion'].errors}"></textarea>
+            <div *ngIf="submitted && f['descripcion'].errors" class="invalid-feedback">
+                Descripcion is required
+            </div>
+        </div>
+        <div class="mb-3">
+            <label for="costo" class="form-label">Costo</label>
+            <input type="text" class="form-control" id="costo" formControlName="costo"
+                [ngClass]="{'is-invalid': submitted && f['costo'].errors}">
+            <div *ngIf="submitted && f['costo'].errors" class="invalid-feedback">
+                costo is required
+            </div>
+        </div>
+        <div class="mb-3">
+            <label for="empleado" class="form-label">usuario</label>
+            <div>
+              <select id="usuario" [ngClass]="{'is-invalid': submitted && f['usuario'].errors}" formControlName="usuario">
+                <option *ngFor="let temp of usuarios" [ngValue]="temp.id">{{temp.username}}</option>
+              </select>
+            </div>
+            <div *ngIf="submitted && f['empleado'].errors" class="invalid-feedback">
+              El usuario es requerido.
+            </div>
+          </div>
+        
+        <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" (click)="activeModal.dismiss()">Cancel</button>
+            <button type="submit" class="btn btn-primary">
+                {{ isEditMode ? 'Update Servicio' : 'Save Servicio' }}
+            </button>
+        </div>
+    </form>
+</div>

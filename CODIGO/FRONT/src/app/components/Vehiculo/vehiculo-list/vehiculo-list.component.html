@@ -1,0 +1,33 @@
+<app-header></app-header>
+<br>
+<div class="container">
+  
+    <h3>Agregar un nuevo Vehiculo</h3>
+    <button class="btn btn-primary mb-3" (click)="openModal()">Add New Vehiculo</button>
+    
+<p>Listado de Vehiculos</p>
+<table class="table">
+    <thead class="thead table-dark">
+        <tr>
+            <th>Placa</th>
+            <th>Marca</th>
+            <th>Modelo</th>
+            <th>Cliente</th>
+            <th>Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let temp of vehiculos">
+            <td>{{temp.placa}}</td>
+            <td>{{temp.marca}}</td>
+            <td>{{temp.modelo}}</td>
+            <td>{{temp.cliente}}</td>
+            <td> <button class="btn btn-warning" (click)="openModal(temp)">Editar </button> &nbsp;
+                <button class="btn btn-danger" (click)="delete(temp.id)">Eliminar </button>
+            </td>
+
+        </tr>
+    </tbody>
+</table>
+
+

@@ -1,0 +1,51 @@
+<div class="modal-header">
+    <h4 class="modal-title">{{ isEditMode ? 'Edit Vehiculo' : 'Add New Vehiculo' }}</h4>
+    <button type="button" class="btn-close" aria-label="Close" (click)="activeModal.dismiss()"></button>
+</div>
+<div class="modal-body">
+    <form [formGroup]="vehiculoForm" (ngSubmit)="onSubmit()">
+        <div class="mb-3">
+            <label for="placa" class="form-label">placa</label>
+            <input type="text" class="form-control" id="placa" formControlName="placa"
+                [ngClass]="{'is-invalid': submitted && f['placa'].errors}">
+            <div *ngIf="submitted && f['placa'].errors" class="invalid-feedback">
+                placa is required
+            </div>
+        </div>
+        <div class="mb-3">
+            <label for="marca" class="form-label">marca</label>
+            <input type="text" class="form-control" id="marca" formControlName="marca"
+                [ngClass]="{'is-invalid': submitted && f['marca'].errors}">
+            <div *ngIf="submitted && f['marca'].errors" class="invalid-feedback">
+                marca is required
+            </div>
+        </div>
+        <div class="mb-3">
+            <label for="modelo" class="form-label">modelo</label>
+            <input type="text" class="form-control" id="modelo" formControlName="modelo"
+                [ngClass]="{'is-invalid': submitted && f['modelo'].errors}">
+            <div *ngIf="submitted && f['modelo'].errors" class="invalid-feedback">
+                modelo is required
+            </div>
+        </div>
+        <div class="mb-3">
+            <label for="cliente" class="form-label">Cliente</label>
+            <div>
+              <select id="cliente" [ngClass]="{'is-invalid': submitted && f['cliente'].errors}" formControlName="cliente">
+                <option *ngFor="let temp of clientes" [ngValue]="temp.id">{{temp.nombres}}</option>
+              </select>
+            </div>
+            <div *ngIf="submitted && f['cliente'].errors" class="invalid-feedback">
+              El Cliente es requerido.
+            </div>
+          </div>
+        
+        <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" (click)="activeModal.dismiss()">Cancel</button>
+            <button type="submit" class="btn btn-primary">
+                {{ isEditMode ? 'Update Vehiculo' : 'Save Vehiculo' }}
+            </button>
+        </div>
+    </form>
+</div>
+

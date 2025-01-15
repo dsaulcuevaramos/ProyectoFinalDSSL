@@ -1,0 +1,42 @@
+<div class="modal-header">
+    <h4 class="modal-title">{{ isEditMode ? 'Edit Usuario' : 'Add New Usuario' }}</h4>
+    <button type="button" class="btn-close" aria-label="Close" (click)="activeModal.dismiss()"></button>
+</div>
+<div class="modal-body">
+    <form [formGroup]="usuarioForm" (ngSubmit)="onSubmit()">
+        <div class="mb-3">
+            <label for="username" class="form-label">username</label>
+            <input type="text" class="form-control" id="username" formControlName="username"
+                [ngClass]="{'is-invalid': submitted && f['username'].errors}">
+            <div *ngIf="submitted && f['nombusernameres'].errors" class="invalid-feedback">
+                username is required
+            </div>
+        </div>
+        <div class="mb-3">
+            <label for="password" class="form-label">password</label>
+            <input type="text" class="form-control" id="password" formControlName="password"
+                [ngClass]="{'is-invalid': submitted && f['password'].errors}">
+            <div *ngIf="submitted && f['password'].errors" class="invalid-feedback">
+                password is required
+            </div>
+        </div>
+        <div class="mb-3">
+            <label for="empleado" class="form-label">Empleado</label>
+            <div>
+              <select id="rol" [ngClass]="{'is-invalid': submitted && f['empleado'].errors}" formControlName="empleado">
+                <option *ngFor="let temp of empleados" [ngValue]="temp.id">{{temp.nombres}}</option>
+              </select>
+            </div>
+            <div *ngIf="submitted && f['empleado'].errors" class="invalid-feedback">
+              El empleado es requerido.
+            </div>
+          </div>
+        
+        <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" (click)="activeModal.dismiss()">Cancel</button>
+            <button type="submit" class="btn btn-primary">
+                {{ isEditMode ? 'Update Usuario' : 'Save Usuario' }}
+            </button>
+        </div>
+    </form>
+</div>

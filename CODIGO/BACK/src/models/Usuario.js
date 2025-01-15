@@ -4,11 +4,11 @@ class Usuario{
 
     static tableName = 'usuario';
 
-    constructor (id,username,password,idempleado){
+    constructor (id,username,password,empleado){
          this.id = id;
          this.username = username;
          this.password = password;
-         this.idempleado = idempleado;
+         this.empleado = empleado;
     }
 }
 

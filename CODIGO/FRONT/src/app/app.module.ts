@@ -17,6 +17,14 @@ import { ProductoFormComponent } from './components/Producto/producto-form/produ
 import { HeaderComponent } from './components/templates/header/header.component';
 import { HomeComponent } from './components/templates/home/home.component';
 import { LoginComponent } from './components/templates/login/login.component';
+import { ClienteListComponent } from './components/Cliente/cliente-list/cliente-list.component';
+import { ClienteFormComponent } from './components/Cliente/cliente-form/cliente-form.component';
+import { ServicioListComponent } from './components/Servicio/servicio-list/servicio-list.component';
+import { ServicioFormComponent } from './components/Servicio/servicio-form/servicio-form.component';
+import { VehiculoListComponent } from './components/Vehiculo/vehiculo-list/vehiculo-list.component';
+import { VehiculoFormComponent } from './components/Vehiculo/vehiculo-form/vehiculo-form.component';
+import { UsuarioListComponent } from './components/Usuario/usuario-list/usuario-list.component';
+import { UsuarioFormComponent } from './components/Usuario/usuario-form/usuario-form.component';
 
 
 @NgModule({
@@ -28,7 +36,15 @@ import { LoginComponent } from './components/templates/login/login.component';
     ProductoFormComponent,
     HeaderComponent,
     HomeComponent,
-    LoginComponent
+    LoginComponent,
+    ClienteListComponent,
+    ClienteFormComponent,
+    ServicioListComponent,
+    ServicioFormComponent,
+    VehiculoListComponent,
+    VehiculoFormComponent,
+    UsuarioListComponent,
+    UsuarioFormComponent
   ],
   imports: [
     BrowserModule,

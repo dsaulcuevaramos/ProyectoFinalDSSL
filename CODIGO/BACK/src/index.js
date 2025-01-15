@@ -8,6 +8,8 @@ const ProductoController = require('./controllers/ProductoController')
 const ClienteController = require('./controllers/ClienteController')
 const RolController = require('./controllers/RolController')
 const UsuarioController = require('./controllers/UsuarioController')
+const VehiculoController = require('./controllers/VehiculoController')
+const ServicioController = require('./controllers/ServicioController')
 
 const app = express();
 app.use(express.json());
@@ -29,6 +31,8 @@ app.use('/api/empleados', EmpleadoController);
 app.use('/api/productos', ProductoController);
 app.use('/api/clientes', ClienteController);
 app.use('/api/usuarios', UsuarioController);
+app.use('/api/vehiculos', VehiculoController);
+app.use('/api/servicios', ServicioController);
 
 
 const port= process.env.PORT || 3000;

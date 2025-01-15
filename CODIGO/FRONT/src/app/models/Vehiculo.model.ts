@@ -4,4 +4,5 @@ export interface Vehiculo{
     marca:string;
     modelo:string;
     estado:boolean;
+    cliente:number;
 }

@@ -1,0 +1,30 @@
+<app-header></app-header>
+<br>
+<div class="container">
+
+    <h3>Agregar un nuevo Cliente</h3>
+    <button class="btn btn-primary mb-3" (click)="openModal()">Add New Cliente</button>
+
+    <p>Listado de Usuarios</p>
+    <table class="table">
+        <thead class="thead table-dark">
+            <tr>
+                <th>Nombre</th>
+                <th>Apellidos</th>
+                <th>Dni</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let temp of clientes">
+                <td>{{temp.nombres}}</td>
+                <td>{{temp.apellidos}}</td>
+                <td>{{temp.dni}}</td>
+                <td> <button class="btn btn-warning" (click)="openModal(temp)">Editar </button> &nbsp;
+                    <button class="btn btn-danger" (click)="delete(temp.id)">Eliminar </button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    
+</div>
