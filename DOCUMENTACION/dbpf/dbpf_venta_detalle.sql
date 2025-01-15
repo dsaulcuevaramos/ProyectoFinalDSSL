@@ -23,17 +23,17 @@ DROP TABLE IF EXISTS `venta_detalle`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `venta_detalle` (
-  `idventa_detalle` int NOT NULL AUTO_INCREMENT,
+  `id` int NOT NULL AUTO_INCREMENT,
   `cantidad` int DEFAULT NULL,
   `preciounidad` double DEFAULT NULL,
   `total` double DEFAULT NULL,
-  `idventa` int DEFAULT NULL,
-  `idproducto` int DEFAULT NULL,
-  PRIMARY KEY (`idventa_detalle`),
-  KEY `fk_venta_detalle_idx` (`idventa`),
-  KEY `fk_venta_producto_idx` (`idproducto`),
-  CONSTRAINT `fk_venta_detalle` FOREIGN KEY (`idventa`) REFERENCES `venta` (`idventa`),
-  CONSTRAINT `fk_venta_producto` FOREIGN KEY (`idproducto`) REFERENCES `producto` (`idproducto`)
+  `venta` int DEFAULT NULL,
+  `producto` int DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `fk_venta_detalle_idx` (`venta`),
+  KEY `fk_venta_producto_idx` (`producto`),
+  CONSTRAINT `fk_venta_detalle` FOREIGN KEY (`venta`) REFERENCES `venta` (`id`),
+  CONSTRAINT `fk_venta_producto` FOREIGN KEY (`producto`) REFERENCES `producto` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -55,4 +55,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2025-01-10 16:16:23
+-- Dump completed on 2025-01-15 17:37:42

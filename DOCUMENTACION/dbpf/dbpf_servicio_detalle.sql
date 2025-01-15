@@ -23,16 +23,16 @@ DROP TABLE IF EXISTS `servicio_detalle`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `servicio_detalle` (
-  `idservicio_detalle` int NOT NULL AUTO_INCREMENT,
-  `idservicio` int DEFAULT NULL,
-  `idvehiculo` int DEFAULT NULL,
+  `id` int NOT NULL AUTO_INCREMENT,
+  `servicio` int DEFAULT NULL,
+  `vehiculo` int DEFAULT NULL,
   `fecha` varchar(45) DEFAULT NULL,
   `costototal` double DEFAULT NULL,
-  PRIMARY KEY (`idservicio_detalle`),
-  KEY `fk_detalle_servicio_idx` (`idservicio`),
-  KEY `fk_detalle_vehiculo_idx` (`idvehiculo`),
-  CONSTRAINT `fk_detalle_servicio` FOREIGN KEY (`idservicio`) REFERENCES `servicio` (`idservicio`),
-  CONSTRAINT `fk_detalle_vehiculo` FOREIGN KEY (`idvehiculo`) REFERENCES `vehiculo` (`idvehiculo`)
+  PRIMARY KEY (`id`),
+  KEY `fk_detalle_servicio_idx` (`servicio`),
+  KEY `fk_detalle_vehiculo_idx` (`vehiculo`),
+  CONSTRAINT `fk_detalle_servicio` FOREIGN KEY (`servicio`) REFERENCES `servicio` (`id`),
+  CONSTRAINT `fk_detalle_vehiculo` FOREIGN KEY (`vehiculo`) REFERENCES `vehiculo` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -54,4 +54,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2025-01-10 16:16:22
+-- Dump completed on 2025-01-15 17:37:42

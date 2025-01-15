@@ -23,13 +23,13 @@ DROP TABLE IF EXISTS `venta`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `venta` (
-  `idventa` int NOT NULL AUTO_INCREMENT,
+  `id` int NOT NULL AUTO_INCREMENT,
   `fecha` varchar(45) DEFAULT NULL,
   `total` double DEFAULT NULL,
-  `idcliente` int DEFAULT NULL,
-  PRIMARY KEY (`idventa`),
-  KEY `fk_cliente_venta_idx` (`idcliente`),
-  CONSTRAINT `fk_cliente_venta` FOREIGN KEY (`idcliente`) REFERENCES `cliente` (`idcliente`)
+  `cliente` int DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `fk_cliente_venta_idx` (`cliente`),
+  CONSTRAINT `fk_cliente_venta` FOREIGN KEY (`cliente`) REFERENCES `cliente` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -51,4 +51,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2025-01-10 16:16:22
+-- Dump completed on 2025-01-15 17:37:42
