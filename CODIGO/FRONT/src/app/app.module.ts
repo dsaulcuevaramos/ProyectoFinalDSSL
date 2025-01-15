@@ -7,23 +7,35 @@ import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
-import { EmpleadoListComponent } from './components/empleado-list/empleado-list.component';
-import { EmpleadoFormComponent } from './components/empleado-form/empleado-form.component';
+//vistas Empleado
+import { EmpleadoListComponent } from './components/Empleado/empleado-list/empleado-list.component';
+import { EmpleadoFormComponent } from './components/Empleado/empleado-form/empleado-form.component';
 
+//vistas Producto
+import { ProductoListComponent } from './components/Producto/producto-list/producto-list.component';
+import { ProductoFormComponent } from './components/Producto/producto-form/producto-form.component';
+import { HeaderComponent } from './components/templates/header/header.component';
+import { HomeComponent } from './components/templates/home/home.component';
+import { LoginComponent } from './components/templates/login/login.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     EmpleadoListComponent,
-    EmpleadoFormComponent
+    EmpleadoFormComponent,
+    ProductoListComponent,
+    ProductoFormComponent,
+    HeaderComponent,
+    HomeComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     ReactiveFormsModule,
-    NgbModule    
+    NgbModule,  
   ],
   providers: [],
   bootstrap: [AppComponent]

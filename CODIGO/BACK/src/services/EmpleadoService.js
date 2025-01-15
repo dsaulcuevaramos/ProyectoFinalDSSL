@@ -22,6 +22,12 @@ class EmpleadoService{
         return EmpleadoRepository.delete(id);
     } 
 
+    //funciones rol
+    async getRol(){
+        const response = EmpleadoRepository.getRol();
+        return response;
+    }
+
 }
 
 module.exports = new EmpleadoService();

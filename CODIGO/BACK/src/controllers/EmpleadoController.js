@@ -41,7 +41,21 @@ router.delete('/:id', async(req,res)=>{
     {
         res.status(404).json({message:'dont delete'});
     }
-
 })
 
+//funciones de rol
+/*
+router.get("/rol", async(req,res)=>{
+    try {
+        const result = await EmpleadoService.getRol();-
+        res.json(result);
+    } catch (error) {
+        if (error.message === 'Rol not found') {
+            res.status(404).json({ error: error.message })                                                                                                                                                      
+          }
+            res.status(500).json({ error: error.message })
+          }
+    }
+)
+*/
 module.exports = router;

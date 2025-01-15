@@ -1,11 +1,10 @@
-
 export interface Empleado{
     id:number;
-    nombre:string;
-    apellido:string;
+    nombres:string;
+    apellidos:string;
     dni:string;
     telefono:string;
     correo:string;
-    tipo:number;
+    rol:number;
     estado:boolean;
 }

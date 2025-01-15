@@ -1,0 +1,33 @@
+<app-header></app-header>
+<br>
+<div class="container">
+
+    <h3>Agregar un nuevo Producto</h3>
+    <button class="btn btn-primary mb-3" (click)="openModal()">Add New Producto</button>
+
+    <p>Listado de Usuarios</p>
+    <table class="table">
+        <thead class="thead table-dark">
+            <tr>
+                <th>Nombre</th>
+                <th>Descripcion</th>
+                <th>Precio</th>
+                <th>Stock</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let temp of productos">
+                <td>{{temp.nombre}}</td>
+                <td>{{temp.descripcion}}</td>
+                <td>{{temp.precio}}</td>
+                <td>{{temp.stock}}</td>
+                <td> <button class="btn btn-warning" (click)="openModal(temp)">Editar </button> &nbsp;
+                    <button class="btn btn-danger" (click)="delete(temp.id)">Eliminar </button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    
+</div>
+

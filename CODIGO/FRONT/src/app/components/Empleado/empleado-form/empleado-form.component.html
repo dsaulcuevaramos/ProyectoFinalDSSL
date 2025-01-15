@@ -1,0 +1,83 @@
+<div class="modal-header">
+    <h4 class="modal-title">{{ isEditMode ? 'Edit Empleado' : 'Add New Empleado' }}</h4>
+    <button type="button" class="btn-close" aria-label="Close" (click)="activeModal.dismiss()"></button>
+</div>
+<div class="modal-body">
+    <form [formGroup]="empleadoForm" (ngSubmit)="onSubmit()">
+        <div class="mb-3">
+            <label for="nombres" class="form-label">nombres</label>
+            <input type="text" class="form-control" id="nombres" formControlName="nombres"
+                [ngClass]="{'is-invalid': submitted && f['nombres'].errors}">
+            <div *ngIf="submitted && f['nombres'].errors" class="invalid-feedback">
+                Name is required
+            </div>
+        </div>
+        <div class="mb-3">
+            <label for="apellidos" class="form-label">apellidos</label>
+            <input type="text" class="form-control" id="apellidos" formControlName="apellidos"
+                [ngClass]="{'is-invalid': submitted && f['apellidos'].errors}">
+            <div *ngIf="submitted && f['apellidos'].errors" class="invalid-feedback">
+                apellidos is required
+            </div>
+        </div>
+        <div class="mb-3">
+            <label for="dni" class="form-label">dni</label>
+            <input type="text" class="form-control" id="dni" formControlName="dni"
+                [ngClass]="{'is-invalid': submitted && f['dni'].errors}">
+            <div *ngIf="submitted && f['dni'].errors" class="invalid-feedback">
+                dni is required
+            </div>
+        </div>
+        <div class="mb-3">
+            <label for="edad" class="form-label">edad</label>
+            <input type="number" class="form-control" id="edad" formControlName="edad"
+                [ngClass]="{'is-invalid': submitted && f['edad'].errors}">
+            <div *ngIf="submitted && f['edad'].errors" class="invalid-feedback">
+                apellidos is required
+            </div>
+        </div>
+        <div class="mb-3">
+            <label for="telefono" class="form-label">telefono</label>
+            <input type="text" class="form-control" id="telefono" formControlName="telefono"
+                [ngClass]="{'is-invalid': submitted && f['telefono'].errors}">
+            <div *ngIf="submitted && f['telefono'].errors" class="invalid-feedback">
+                telefono is required
+            </div>
+        </div>
+        <div class="mb-3">
+            <label for="correo" class="form-label">correo</label>
+            <input type="text" class="form-control" id="nombre" formControlName="correo"
+                [ngClass]="{'is-invalid': submitted && f['correo'].errors}">
+            <div *ngIf="submitted && f['correo'].errors" class="invalid-feedback">
+                correo is required
+            </div>
+        </div>
+        <div class="mb-3">
+            <label for="rol" class="form-label">Rol</label>
+            <div>
+              <select id="rol" [ngClass]="{'is-invalid': submitted && f['rol'].errors}" formControlName="rol">
+                <option *ngFor="let temp of rols" [ngValue]="temp.id">{{temp.nombre}}</option>
+              </select>
+            </div>
+            <div *ngIf="submitted && f['rol'].errors" class="invalid-feedback">
+              El rol es requerido.
+            </div>
+          </div>
+        <!--<div class="mb-3">
+            <label for="apellido" class="form-label">correo</label>
+            <input type="apellido" class="form-control" id="apellido" formControlName="apellido"
+                [ngClass]="{'is-invalid': submitted && f['apellido'].errors}">
+            <div *ngIf="submitted && f['apellido'].errors" class="invalid-feedback">
+                <div *ngIf="f['apellido'].errors['required']">apellido is required</div>
+                <div *ngIf="f['apellido'].errors['apellido']">Invalid apellido format</div>
+            </div>
+        </div>-->
+        
+        <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" (click)="activeModal.dismiss()">Cancel</button>
+            <button type="submit" class="btn btn-primary">
+                {{ isEditMode ? 'Update Empleado' : 'Save Empleado' }}
+            </button>
+        </div>
+    </form>
+</div>

@@ -3,10 +3,10 @@ class Empleado{
 
     static tableName = 'empleado';
 
-    constructor (id,nombre,apellido,dni,telefono,correo,rol,estado){
+    constructor (id,nombres,apellidos,dni,telefono,correo,rol,estado){
          this.id = id;
-         this.nombre = nombre;
-         this.apellido = apellido;
+         this.nombres = nombres;
+         this.apellidos = apellidos;
          this.dni = dni;
          this.telefono = telefono;
          this.correo = correo;
