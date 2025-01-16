@@ -23,6 +23,10 @@ class ProductoService{
         return ProductoRepository.delete(id);
     } 
 
+    getByNombre(nombre){
+        return ProductoRepository.findByNombre(nombre);
+    }
+
 }
 
 module.exports = new ProductoService();

@@ -24,4 +24,8 @@ export class ClienteService {
     return this.http.delete(`${this.apiUrl}/${id}`);
   }
 
+  getByDni(dni:string): Observable<Cliente> {
+    return this.http.get<Cliente>(`${this.apiUrl}/dni/${dni}`);
+  }
+
 }

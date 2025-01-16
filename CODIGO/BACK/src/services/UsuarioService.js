@@ -26,6 +26,10 @@ class UsuarioService{
         return UsuarioRepository.deleteBy(empleado);
     }
 
+    getForLogin(username){
+        return UsuarioRepository.getForLogin(username);
+    }
+
 }
 
 module.exports = new UsuarioService();

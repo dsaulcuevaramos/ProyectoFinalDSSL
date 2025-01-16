@@ -1,0 +1,27 @@
+/* Estilo personalizado */
+body {
+    background-color: #F2F3F4;
+    font-family: 'Arial', sans-serif;
+  }
+  
+  h1, h2 {
+    color: #17202A;
+  }
+  
+  .btn-warning {
+    background-color: #F1C40F;
+    border-color: #F1C40F;
+  }
+  
+  .btn-warning:hover {
+    background-color: #F39C12;
+    border-color: #F39C12;
+  }
+  
+  .navbar-brand {
+    font-weight: bold;
+  }
+  
+  .navbar-nav .nav-link.active {
+    color: #F1C40F;
+  }

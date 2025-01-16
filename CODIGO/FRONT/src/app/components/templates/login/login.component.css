@@ -1,14 +1,56 @@
-.gradient-custom-2 {
-    /* fallback for old browsers */
-    background: #fccb90;
-
-    /* Chrome 10-25, Safari 5.1-6 */
-    background: -webkit-linear-gradient(to right, #ee7724, #d8363a, #dd3675, #b44593);
-
-    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-    background: linear-gradient(to right, #ee7724, #d8363a, #dd3675, #b44593);
+.gradient-form {
+    background-color: #F2F3F4;
 }
 
+/* Colores personalizados */
+.gradient-custom-2 {
+    background: linear-gradient(to right, #273746, #F1C40F, #F2F3F4, #17202A);
+    background-position: center;
+    background-size: cover;
+}
+
+/* Mejora de contraste para el mensaje y el botón */
+.gradient-custom-2 .text-white {
+    color: #fff !important; /* Asegura que el texto sea blanco */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6); /* Agrega sombra al texto para mejorar contraste */
+}
+
+/* Estilos para el formulario */
+.form-outline.form-dark input {
+    border: 1px solid #273746;
+    background-color: #F2F3F4;
+    color: #17202A;
+}
+
+.form-outline.form-dark label {
+    color: #273746;
+}
+
+/* Botón */
+.btn-dark {
+    background-color: #273746;
+    color: #F1C40F;
+    border: none;
+}
+
+.btn-dark:hover {
+    background-color: #17202A;
+    color: #F1C40F;
+}
+
+/* Estilos de la imagen */
+.text-center img {
+    max-width: 185px;
+    border-radius: 50%;
+}
+
+/* Estilo para el texto en el lado derecho */
+.gradient-custom-2 .text-white p {
+    color: #ddd;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5); /* Sombra suave para el texto */
+}
+
+/* Ajustes de bordes en pantallas grandes */
 @media (min-width: 768px) {
     .gradient-form {
         height: 100vh !important;

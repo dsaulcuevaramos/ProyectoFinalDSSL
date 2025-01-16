@@ -32,6 +32,7 @@ export class UsuarioFormComponent {
       id: [this.usuario?.id],
       username: [this.usuario?.username],
       password: [this.usuario?.password],
+      correo: [this.usuario?.correo],
       empleado: [this.usuario?.empleado],
  
     });

@@ -7,6 +7,7 @@ import { ClienteListComponent } from "./components/Cliente/cliente-list/cliente-
 import { VehiculoListComponent } from "./components/Vehiculo/vehiculo-list/vehiculo-list.component";
 import { ServicioListComponent } from "./components/Servicio/servicio-list/servicio-list.component";
 import { UsuarioListComponent } from "./components/Usuario/usuario-list/usuario-list.component";
+import { CarritoComponent } from "./components/Venta/carrito/carrito.component";
 import { HomeComponent } from "./components/templates/home/home.component";
 import { LoginComponent } from "./components/templates/login/login.component"; 
 
@@ -34,7 +35,10 @@ const routes: Routes = [
     { path:'',redirectTo:'/servicio', pathMatch:'full'},
     //rutear usuario
     { path: 'usuario', component: UsuarioListComponent },
-    { path:'',redirectTo:'/usuario', pathMatch:'full'}
+    { path:'',redirectTo:'/usuario', pathMatch:'full'},
+    //rutear servicio
+    { path: 'carrito', component: CarritoComponent },
+    { path:'',redirectTo:'/carrito', pathMatch:'full'}
     
 ]
 

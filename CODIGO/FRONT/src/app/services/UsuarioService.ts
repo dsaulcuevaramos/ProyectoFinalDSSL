@@ -23,5 +23,11 @@ export class UsuarioService {
   delete(id: number): Observable<any> {
     return this.http.delete(`${this.apiUrl}/${id}`);
   }
+  deleteByEmpleado(id: number): Observable<any> {
+    return this.http.delete(`${this.apiUrl}/empleado/${id}`);
+  }
+  getForLogin(username:string): Observable<Usuario> {
+    return this.http.get<Usuario>(`${this.apiUrl}/login/${username}`);
+  }
 
 }

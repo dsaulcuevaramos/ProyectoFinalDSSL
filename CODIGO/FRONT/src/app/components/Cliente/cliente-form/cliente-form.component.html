@@ -1,8 +1,8 @@
-<div class="modal-header">
+<div class="modal-header" style="background-color: #273746; color: #F1C40F;">
     <h4 class="modal-title">{{ isEditMode ? 'Edit Ciente' : 'Add New Ciente' }}</h4>
     <button type="button" class="btn-close" aria-label="Close" (click)="activeModal.dismiss()"></button>
 </div>
-<div class="modal-body">
+<div class="modal-body" style="background-color: #F2F3F4;">
     <form [formGroup]="clienteForm" (ngSubmit)="onSubmit()">
         <div class="mb-3">
             <label for="nombres" class="form-label">Nombres</label>

@@ -11,6 +11,7 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
   styleUrls: ['./cliente-list.component.css']
 })
 export class ClienteListComponent implements OnInit {
+  
   //nos brinda infromacion del modal
   @ViewChild('clienteModal') ClienteModal?: ClienteFormComponent
 

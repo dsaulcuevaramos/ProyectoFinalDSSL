@@ -25,13 +25,10 @@ export class UsuarioListComponent {
   ){
 
     this.usuarioForm = this.fb.group({
-      nombre: [''],
-      apellido:[''],
-      dni:[''],
-      telefono:[''],
+      usarname: [''],
+      password:[''],
       correo:[''],
-      rol: 0,
-      estado: false,
+      empleado: 0,
     })
   }
 
@@ -47,18 +44,17 @@ export class UsuarioListComponent {
     )
   }
 
-  edit(empleado: any){
-    const modalElement = document.getElementById('empleadoModal');
+  edit(usario: any){
+    const modalElement = document.getElementById('usarioModal');
 
-    this.currentId = empleado.id;
-    this.usuarioForm.patchValue(empleado);
+    this.currentId = usario.id;
+    this.usuarioForm.patchValue(usario);
     this.editMode = true;
   }
 
   delete(id: number){
     const confirmacion = confirm("¿estas seguro?");
     if(confirmacion){
-      //this.usuarioService.delete(id).subscribe()
       this.usuarioService.delete(id).subscribe(()=>{
         this.load();
       })
@@ -94,7 +90,7 @@ export class UsuarioListComponent {
 
     //esto es para saber si va crear o editar
     if(usuario){
-      modalRef.componentInstance.empleado = usuario;
+      modalRef.componentInstance.usuario = usuario;
       modalRef.componentInstance.isEditMode = true;
     }
 

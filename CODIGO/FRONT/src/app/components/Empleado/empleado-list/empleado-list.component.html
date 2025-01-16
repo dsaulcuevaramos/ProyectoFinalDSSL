@@ -2,78 +2,46 @@
 <br>
 <div class="container">
   
-    <h3>Agregar un nuevo Empleado</h3>
-    <button class="btn btn-primary mb-3" (click)="openModal()">Add New Empleado</button>
-    
+    <div class="text-center">
+        <h3 class=" text-dark mb-4">Agregar un nuevo Empleado</h3>
+        <button class="text-center btn btn-warning mb-3" (click)="openModal()">Añadir Nuevo Empleado</button>
+    </div>
  <!--
-    
-   
     <form [formGroup]="empleadoForm" (ngSubmit)="onSubmit()">
-
         <div class="row">
-            <div class="form-group">
-                <label for="txtUsuario"> Nombre</label>
-                <input class="form-control" placeholder="Ingrese sus Nombres" formControlName="Nombre">
-            </div>
+            <div class="form-group"><label for="txtUsuario"> Nombre</label><input class="form-control" placeholder="Ingrese sus Nombres" formControlName="Nombre"></div>
         </div>
         <div class="row">
-            <div class="form-group">
-                <label for="txtUsuario"> Apellidos</label>
-                <input class="form-control" placeholder="Ingrese sus Apellidos" formControlName="Apellidos">
-            </div>
+            <div class="form-group"><label for="txtUsuario"> Apellidos</label><input class="form-control" placeholder="Ingrese sus Apellidos" formControlName="Apellidos"></div>
         </div>
         <div class="row">
-            <div class="form-group">
-                <label for="txtUsuario"> Dni</label>
-                <input class="form-control" placeholder="Ingrese su Dni" formControlName="Dni">
-            </div>
+            <div class="form-group"><label for="txtUsuario"> Dni</label><input class="form-control" placeholder="Ingrese su Dni" formControlName="Dni"></div>
         </div>
         <div class="row">
-            <div class="form-group">
-                <label for="txtUsuario"> Telefono</label>
-                <input class="form-control" placeholder="Ingrese su Telefono" formControlName="Telefono">
-            </div>
+            <div class="form-group"><label for="txtUsuario"> Telefono</label><input class="form-control" placeholder="Ingrese su Telefono" formControlName="Telefono"></div>
         </div>
         <div class="row">
-            <div class="form-group">
-                <label for="txtCorreo"> Correo</label>
-                <input class="form-control" placeholder="Ingrese su correo" formControlName="Correo">
-            </div>
+            <div class="form-group"><label for="txtCorreo"> Correo</label><input class="form-control" placeholder="Ingrese su correo" formControlName="Correo"></div>
         </div>
         <div class="row">
-            <div class="form-group">
-                <label for="txtUsuario"> tipo</label>
-                <input class="form-control" placeholder="Ingrese su tipo" formControlName="tipo">
-            </div>
+            <div class="form-group"><label for="txtUsuario"> tipo</label><input class="form-control" placeholder="Ingrese su tipo" formControlName="tipo"></div>
         </div>
         <br>
         <div class="row justify-content-center">
-            <div class="col-4">
-
-            </div>
-
-            <div class="col-4">
-                <button type="submit" class="btn btn-primary"> Guardar</button> &nbsp;
-                <button type="button" class="btn btn-danger" (click)="resetForm()"> Cancelar</button>
-            </div>
-            <div class="col-4">
-
-            </div>
-
+            <div class="col-4"></div>
+            <div class="col-4"><button type="submit" class="btn btn-primary"> Guardar</button> &nbsp;<button type="button" class="btn btn-danger" (click)="resetForm()"> Cancelar</button></div>
+            <div class="col-4"></div>
         </div>
-
     </form>
 --> 
-
-    <p>Listado de Usuarios</p>
-    <table class="table">
-        <thead class="thead table-dark">
+    <h4 class="text-center text-dark mb-4">Listado de Empleados</h4>
+    <table class="table table-striped table-bordered">
+        <thead class="thead-dark" style="background-color: #273746; color: #F1C40F;">
             <tr>
                 <th>Nombre</th>
                 <th>Apellidos</th>
                 <th>Dni</th>
                 <th>Telefono</th>
-                <th>Correo</th>
                 <th>Rol</th>
                 <th>Acciones</th>
             </tr>
@@ -84,7 +52,6 @@
                 <td>{{empleado.apellidos}}</td>
                 <td>{{empleado.dni}}</td>
                 <td>{{empleado.telefono}}</td>
-                <td>{{empleado.correo}}</td>
                 <td>{{empleado.rol}}</td>
                 <td> <button class="btn btn-warning" (click)="openModal(empleado)">Editar </button> &nbsp;
                     <button class="btn btn-danger" (click)="delete(empleado.id)">Eliminar </button>

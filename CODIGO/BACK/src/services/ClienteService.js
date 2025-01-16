@@ -7,7 +7,7 @@ class ClienteService{
         return ClienteRepository.findAll();
     }
 
-    getrById(id){
+    getById(id){
         return ClienteRepository.findById(id);
     }
 
@@ -22,6 +22,10 @@ class ClienteService{
     delete(id){
         return ClienteRepository.delete(id);
     } 
+
+    getByDni(dni){
+        return ClienteRepository.getByDni(dni);
+    }
 
 }
 

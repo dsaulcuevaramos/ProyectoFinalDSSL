@@ -1,11 +1,23 @@
 <app-header></app-header>
 <br>
-<div class="container">
-    <div>
-        <h2><a href="">ACCEDER AL CARRITO DE VENTA</a></h2>
+<div class="container text-center">
+  <div *ngIf="user" class="mb-4">
+    <h1 class="text-dark">Bienvenido, {{ user.username }}</h1>
+  </div>
 
-        <hr>
-        <h2><a routerLink="/servicio" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
-            SOLICITAR UN SERVICIO</a></h2>
-    </div>
+  <div class="mt-4">
+    <h2>
+      <a routerLink="/carrito" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" class="btn btn-warning w-50 mb-3">
+        ACCEDER AL CARRITO DE VENTA
+      </a>
+    </h2>
+
+    <hr class="my-4">
+
+    <h2>
+      <a routerLink="/servicio" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" class="btn btn-warning w-50">
+        SOLICITAR UN SERVICIO
+      </a>
+    </h2>
+  </div>
 </div>

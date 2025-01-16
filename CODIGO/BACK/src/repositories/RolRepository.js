@@ -5,5 +5,8 @@ class RolRepository extends CrudRepository {
     constructor(){
         super(Rol);
     }
+
+    async 
+
 }
 module.exports = new RolRepository();

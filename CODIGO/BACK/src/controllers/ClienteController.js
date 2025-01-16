@@ -16,6 +16,15 @@ router.get('/:id', async (req, res) => {
         res.status(404).json({ message: 'not found' });
     }
 })
+router.get('/dni/:dni', async (req, res) => {
+    const response = await ClienteService.getByDni(req.params.dni);
+    if (response) {
+        res.json(response);
+    }
+    else {
+        res.status(404).json({ message: 'not found' });
+    }
+})
 router.post('/', async (req, res) => {
     const create = await ClienteService.create(req.body);
     if (create)

@@ -10,7 +10,7 @@ router.get('/', async (req, res) => {
 router.get('/:id', async (req, res) => {
     const response = await ProductoService.getById(req.params.id);
     if (response) {
-        res.json(user);
+        res.json(response);
     }
     else {
         res.status(404).json({ message: 'not found' });
@@ -41,7 +41,16 @@ router.delete('/:id', async(req,res)=>{
     {
         res.status(404).json({message:'dont delete'});
     }
+})
 
+router.get('/producto/:nombre', async (req, res) => {
+    const response = await ProductoService.getByNombre(req.params.nombre);
+    if (response) {
+        res.json(response);
+    }
+    else {
+        res.status(404).json({ message: 'not found' });
+    }
 })
 
 module.exports = router;

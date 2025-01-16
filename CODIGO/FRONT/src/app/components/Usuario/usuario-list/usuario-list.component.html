@@ -2,16 +2,19 @@
 <br>
 <div class="container">
   
-    <h3>Agregar un nuevo Usuario</h3>
-    <button class="btn btn-primary mb-3" (click)="openModal()">Add New Usuario</button>
+    <div class="text-center">
+        <h3 class=" text-dark mb-4">Agregar un nuevo Usuario</h3>
+        <button class="text-center btn btn-warning mb-3" (click)="openModal()">Añadir Nuevo Usuario</button>
+    </div>
+    <h4 class="text-center text-dark mb-4">Listado de Usuarios</h4>
 
-    <p>Listado de Usuarios</p>
-    <table class="table">
-        <thead class="thead table-dark">
+    <table class="table table-striped table-bordered">
+        <thead class="thead-dark" style="background-color: #273746; color: #F1C40F;">
             <tr>
                 <th>username</th>
                 <th>password</th>
                 <th>empleado</th>
+                <th>correo</th>
                 <th>Acciones</th>
             </tr>
         </thead>
@@ -20,6 +23,7 @@
                 <td>{{temp.username}}</td>
                 <td>{{temp.password}}</td>
                 <td>{{temp.empleado}}</td>
+                <td>{{temp.correo}}</td>
                 <td> <button class="btn btn-warning" (click)="openModal(temp)">Editar </button> &nbsp;
                     <button class="btn btn-danger" (click)="delete(temp.id)">Eliminar </button>
                 </td>

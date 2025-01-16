@@ -123,4 +123,18 @@ export class ServicioListComponent implements OnInit{
 
   }
 
+  //para servicio detalle
+  servicio_detalle: any[] = []
+   addToServicio(servicio: Servicio): void {
+      // Verificar si el producto ya está en el carrito
+      const existingProduct = this.servicio_detalle.find(item => item.servicio.id === servicio.id);
+      if (!existingProduct) {
+        // Si el producto no está en el carrito, lo agregamos con cantidad inicial de 1
+        this.servicio_detalle.push({servicio});
+      }
+    }
+    removeFromCart(item:any){
+      this.servicio_detalle.splice(this.servicio_detalle.indexOf(item), 1)
+    }
+
 }

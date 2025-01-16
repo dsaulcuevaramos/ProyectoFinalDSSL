@@ -12,5 +12,11 @@ class UsuarioRepository extends CrudRepository {
         return result.affectedRows > 0;
     }
 
+    async getForLogin(username){
+        const [rows] = await this.pool.query(`SELECT * FROM ${this.tableName} 
+           WHERE username = ?`, [username]);          
+        return rows[0];
+    }
+
 }
 module.exports = new UsuarioRepository();

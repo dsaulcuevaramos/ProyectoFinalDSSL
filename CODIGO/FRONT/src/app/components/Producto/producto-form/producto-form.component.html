@@ -1,46 +1,46 @@
-<div class="modal-header">
-    <h4 class="modal-title">{{ isEditMode ? 'Edit Producto' : 'Add New Producto' }}</h4>
+<div class="modal-header" style="background-color: #273746; color: #F1C40F;">
+    <h4 class="modal-title">{{ isEditMode ? 'Editar Producto' : 'Añadir Nuevo Producto' }}</h4>
     <button type="button" class="btn-close" aria-label="Close" (click)="activeModal.dismiss()"></button>
 </div>
-<div class="modal-body">
+<div class="modal-body" style="background-color: #F2F3F4;">
     <form [formGroup]="productoForm" (ngSubmit)="onSubmit()">
         <div class="mb-3">
-            <label for="nombres" class="form-label">Nombre</label>
+            <label for="nombres" class="form-label text-dark">Nombre</label>
             <input type="text" class="form-control" id="nombres" formControlName="nombres"
                 [ngClass]="{'is-invalid': submitted && f['nombres'].errors}">
             <div *ngIf="submitted && f['nombres'].errors" class="invalid-feedback">
-                Nombre is required
+                Nombre es obligatorio
             </div>
         </div>
         <div class="mb-3">
-            <label for="descripcion" class="form-label">Descripcion</label>
-            <textarea type="text" class="form-control" id="descripcion" formControlName="descripcion"
-                rows="3" cols="40"
+            <label for="descripcion" class="form-label text-dark">Descripción</label>
+            <textarea class="form-control" id="descripcion" formControlName="descripcion" rows="3" 
                 [ngClass]="{'is-invalid': submitted && f['descripcion'].errors}"></textarea>
             <div *ngIf="submitted && f['descripcion'].errors" class="invalid-feedback">
-                Descripcion is required
+                Descripción es obligatoria
             </div>
         </div>
         <div class="mb-3">
-            <label for="precio" class="form-label">Precio</label>
+            <label for="precio" class="form-label text-dark">Precio</label>
             <input type="text" class="form-control" id="precio" formControlName="precio"
                 [ngClass]="{'is-invalid': submitted && f['precio'].errors}">
             <div *ngIf="submitted && f['precio'].errors" class="invalid-feedback">
-                Precio is required
+                Precio es obligatorio
             </div>
         </div>
         <div class="mb-3">
-            <label for="stok" class="form-label">Stock</label>
+            <label for="stock" class="form-label text-dark">Stock</label>
             <input type="text" class="form-control" id="stock" formControlName="stock"
                 [ngClass]="{'is-invalid': submitted && f['stock'].errors}">
             <div *ngIf="submitted && f['stock'].errors" class="invalid-feedback">
-                Stok is required
+                Stock es obligatorio
             </div>
         </div>
+
         <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" (click)="activeModal.dismiss()">Cancel</button>
-            <button type="submit" class="btn btn-primary">
-                {{ isEditMode ? 'Update Producto' : 'Save Producto' }}
+            <button type="button" class="btn btn-secondary" (click)="activeModal.dismiss()">Cancelar</button>
+            <button type="submit" class="btn btn-warning">
+                {{ isEditMode ? 'Actualizar Producto' : 'Guardar Producto' }}
             </button>
         </div>
     </form>

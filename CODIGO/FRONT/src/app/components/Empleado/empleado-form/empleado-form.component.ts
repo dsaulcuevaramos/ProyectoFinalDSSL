@@ -34,7 +34,6 @@ export class EmpleadoFormComponent {
       apellidos: [this.empleado?.apellidos],
       dni: [this.empleado?.dni],
       telefono: [this.empleado?.telefono],
-      correo: [this.empleado?.correo],
       rol: [this.empleado?.rol]
     });
     this.loadRols();

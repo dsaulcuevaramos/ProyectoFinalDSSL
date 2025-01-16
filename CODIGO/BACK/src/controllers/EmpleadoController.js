@@ -10,7 +10,7 @@ router.get('/', async (req, res) => {
 router.get('/:id', async (req, res) => {
     const response = await EmpleadoService.getById(req.params.id);
     if (response) {
-        res.json(user);
+        res.json(response);
     }
     else {
         res.status(404).json({ message: 'not found' });

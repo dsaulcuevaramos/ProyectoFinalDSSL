@@ -1,8 +1,8 @@
-<div class="modal-header">
+<div class="modal-header" style="background-color: #273746; color: #F1C40F;">
     <h4 class="modal-title">{{ isEditMode ? 'Edit Empleado' : 'Add New Empleado' }}</h4>
     <button type="button" class="btn-close" aria-label="Close" (click)="activeModal.dismiss()"></button>
 </div>
-<div class="modal-body">
+<div class="modal-body" style="background-color: #F2F3F4;">
     <form [formGroup]="empleadoForm" (ngSubmit)="onSubmit()">
         <div class="mb-3">
             <label for="nombres" class="form-label">nombres</label>
@@ -42,14 +42,6 @@
                 [ngClass]="{'is-invalid': submitted && f['telefono'].errors}">
             <div *ngIf="submitted && f['telefono'].errors" class="invalid-feedback">
                 telefono is required
-            </div>
-        </div>
-        <div class="mb-3">
-            <label for="correo" class="form-label">correo</label>
-            <input type="text" class="form-control" id="nombre" formControlName="correo"
-                [ngClass]="{'is-invalid': submitted && f['correo'].errors}">
-            <div *ngIf="submitted && f['correo'].errors" class="invalid-feedback">
-                correo is required
             </div>
         </div>
         <div class="mb-3">

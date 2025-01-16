@@ -4,7 +4,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { HttpClientModule } from '@angular/common/http';
-import { ReactiveFormsModule } from '@angular/forms';
+import { ReactiveFormsModule, FormsModule  } from '@angular/forms';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 //vistas Empleado
@@ -25,6 +25,7 @@ import { VehiculoListComponent } from './components/Vehiculo/vehiculo-list/vehic
 import { VehiculoFormComponent } from './components/Vehiculo/vehiculo-form/vehiculo-form.component';
 import { UsuarioListComponent } from './components/Usuario/usuario-list/usuario-list.component';
 import { UsuarioFormComponent } from './components/Usuario/usuario-form/usuario-form.component';
+import { CarritoComponent } from './components/Venta/carrito/carrito.component';
 
 
 @NgModule({
@@ -44,7 +45,8 @@ import { UsuarioFormComponent } from './components/Usuario/usuario-form/usuario-
     VehiculoListComponent,
     VehiculoFormComponent,
     UsuarioListComponent,
-    UsuarioFormComponent
+    UsuarioFormComponent,
+    CarritoComponent
   ],
   imports: [
     BrowserModule,
@@ -52,6 +54,7 @@ import { UsuarioFormComponent } from './components/Usuario/usuario-form/usuario-
     HttpClientModule,
     ReactiveFormsModule,
     NgbModule,  
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

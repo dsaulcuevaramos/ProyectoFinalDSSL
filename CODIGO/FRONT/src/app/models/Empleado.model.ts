@@ -4,7 +4,6 @@ export interface Empleado{
     apellidos:string;
     dni:string;
     telefono:string;
-    correo:string;
     rol:number;
     estado:boolean;
 }

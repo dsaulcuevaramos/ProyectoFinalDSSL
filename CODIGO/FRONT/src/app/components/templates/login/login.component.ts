@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { Usuario } from 'src/app/models/Usuario.model';
 import { FormBuilder , FormGroup, NgForm, Validators} from '@angular/forms'; 
 import { Router } from '@angular/router'; 
+import { AutenticacionService } from 'src/app/services/autenticacion.service'; 
+import { UsuarioService } from 'src/app/services/UsuarioService';
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -13,8 +16,10 @@ export class LoginComponent implements OnInit{
     usuarioForm!: FormGroup; 
 
      constructor(
-        private fb: FormBuilder,
-        private router: Router
+      private autenticacionService: AutenticacionService,
+      private usuarioService: UsuarioService,
+      private router: Router,
+      private fb : FormBuilder
       ){}
 
     ngOnInit(): void {
@@ -27,17 +32,26 @@ export class LoginComponent implements OnInit{
 
     login(){
       if (this.usuarioForm.valid) {
-        const { username, password } = this.usuarioForm.value;
-  
-        // Validación simple: puedes personalizarla o usar un backend real
-        if (username === 'hola' && password === 'mundo') {
-          this.router.navigate(['home']);
-        } else {
-          alert('Usuario o contraseña incorrectos');
-        }
-      } else {
+        this.usuarioService.getForLogin(this.usuarioForm.value.username).subscribe(
+          (response) =>{
+            if(this.usuarioForm.value.password == response.password){
+              this.autenticacionService.setCurrentUser(response);
+              this.usuarioForm.reset();
+              this.router.navigate(['home']);
+            }else{
+              alert('Contraseña Incorrecta');
+              this.usuarioForm.controls['contraseña'].reset();
+            }
+          },
+          (error) => {
+            alert('ocurrio un error');
+            this.usuarioForm.reset();
+          }
+        )
+      }else {
         alert('Por favor, complete todos los campos');
       }
+      
     }
 
 }

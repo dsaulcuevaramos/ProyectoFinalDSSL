@@ -31,7 +31,6 @@ export class EmpleadoListComponent implements OnInit{
       apellido:[''],
       dni:[''],
       telefono:[''],
-      correo:[''],
       rol: 0,
       estado: false,
     })
@@ -60,7 +59,7 @@ export class EmpleadoListComponent implements OnInit{
   delete(id: number){
     const confirmacion = confirm("¿estas seguro?");
     if(confirmacion){
-      this.usuarioService.delete(id).subscribe()
+      this.usuarioService.deleteByEmpleado(id).subscribe()
       this.empleadoService.delete(id).subscribe(()=>{
         this.load();
       })
