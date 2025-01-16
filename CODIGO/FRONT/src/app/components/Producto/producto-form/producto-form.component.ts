@@ -24,7 +24,7 @@ export class ProductoFormComponent {
     console.log(this.producto);
     this.productoForm = this.fb.group({
       id: [this.producto?.id],
-      nombre: [this.producto?.nombre],
+      nombres: [this.producto?.nombres],
       descripcion: [this.producto?.descripcion],
       precio: [this.producto?.precio],
       stock: [this.producto?.stock],

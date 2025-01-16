@@ -6,7 +6,6 @@ class Servicio{
 
     constructor (id,descripcion,costo,usuario){
          this.id = id;  
-         this.nombre = nombre;
          this.descripcion = descripcion;
          this.costo = costo;
          this.usuario = usuario;

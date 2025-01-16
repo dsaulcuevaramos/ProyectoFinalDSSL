@@ -25,7 +25,7 @@ export class ProductoListComponent implements OnInit {
   ) {
 
     this.productoForm = this.fb.group({
-      nombre: [''],
+      nombres: [''],
       descripcion: [''],
       precio: [''],
       stock: [''],

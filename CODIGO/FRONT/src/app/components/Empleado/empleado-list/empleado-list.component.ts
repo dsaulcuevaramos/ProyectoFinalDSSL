@@ -27,7 +27,7 @@ export class EmpleadoListComponent implements OnInit{
   ){
 
     this.empleadoForm = this.fb.group({
-      nombre: [''],
+      nombres: [''],
       apellido:[''],
       dni:[''],
       telefono:[''],

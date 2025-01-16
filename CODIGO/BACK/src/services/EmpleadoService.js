@@ -14,6 +14,7 @@ class EmpleadoService{
         return EmpleadoRepository.create(data);
     }
 
+
     update(id, data){
         return EmpleadoRepository.update(id, data);
     }

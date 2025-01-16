@@ -4,9 +4,9 @@ class Producto{
 
     static tableName = 'producto';
 
-    constructor (idproducto,nombre,descripcion,precio,stock,estado){
-        this.idproducto = idproducto;  
-        this.nombre = nombre;
+    constructor (id,nombres,descripcion,precio,stock,estado){
+        this.id = id;  
+        this.nombres = nombres;
         this.descripcion = descripcion;
         this.precio = precio;
         this.stock = stock;

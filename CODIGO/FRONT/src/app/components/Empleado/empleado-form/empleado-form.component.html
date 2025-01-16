@@ -56,7 +56,7 @@
             <label for="rol" class="form-label">Rol</label>
             <div>
               <select id="rol" [ngClass]="{'is-invalid': submitted && f['rol'].errors}" formControlName="rol">
-                <option *ngFor="let temp of rols" [ngValue]="temp.id">{{temp.nombre}}</option>
+                <option *ngFor="let temp of rols" [ngValue]="temp.id">{{temp.nombres}}</option>
               </select>
             </div>
             <div *ngIf="submitted && f['rol'].errors" class="invalid-feedback">

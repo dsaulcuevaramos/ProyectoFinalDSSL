@@ -3,9 +3,9 @@ class Rol{
 
     static tableName = 'rol';
 
-    constructor (id,nombre,descripcion,sueldo){
+    constructor (id,nombres,descripcion,sueldo){
          this.id = id;
-         this.nombre = nombre;
+         this.nombres = nombres;
          this.descripcion = descripcion;
          this.sueldo = sueldo;
     }
