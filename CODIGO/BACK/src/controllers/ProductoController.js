@@ -23,9 +23,20 @@ router.post('/', async (req, res) => {
     else
         res.status(404).json({ message: 'not registred' });
 })
+
 router.put('/:id', async (req, res) => {
     const update = await ProductoService.update(
         req.params.id,req.body);
+    if (update)
+        res.status(201).json(update);
+    else
+        res.status(404).json({ message: 'not updated' });
+})
+
+router.put('/stock/:id', async (req, res) => {
+    const {stock} = req.body;
+    const update = await ProductoService.update(
+        req.params.id,stock);
     if (update)
         res.status(201).json(update);
     else

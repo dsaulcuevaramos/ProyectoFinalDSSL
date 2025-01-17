@@ -10,6 +10,10 @@ const RolController = require('./controllers/RolController')
 const UsuarioController = require('./controllers/UsuarioController')
 const VehiculoController = require('./controllers/VehiculoController')
 const ServicioController = require('./controllers/ServicioController')
+const VentaController = require('./controllers/VentaController') 
+
+const VentaDetalleController = require('./controllers/VentaDetalleController') 
+const ServicioDetalleController = require('./controllers/ServicioDetalleController') 
 
 const app = express();
 app.use(express.json());
@@ -33,6 +37,10 @@ app.use('/api/clientes', ClienteController);
 app.use('/api/usuarios', UsuarioController);
 app.use('/api/vehiculos', VehiculoController);
 app.use('/api/servicios', ServicioController);
+app.use('/api/ventas', VentaController);
+
+app.use('/api/venta_detalle', VentaDetalleController);
+app.use('/api/servicio_detalle', ServicioDetalleController);
 
 
 const port= process.env.PORT || 3000;

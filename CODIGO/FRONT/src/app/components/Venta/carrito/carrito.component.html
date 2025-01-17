@@ -4,85 +4,85 @@
   <!-- Fila principal -->
   <div class="row">
     <!-- Sección de productos (70%) -->
-<div class="col-md-8 bg-light p-4 rounded shadow-sm">
-  <h3 class="text-center text-primary">Productos Disponibles</h3>
-  
-  <!-- Campo de búsqueda -->
-  <div class="d-flex mb-4">
-    <input 
-      type="text" 
-      id="buscaProducto" 
-      class="form-control me-3" 
-      placeholder="Ingrese nombre del producto"
-      (input)="onInput($event)"
-/>
-  </div>
-  
-  <!-- Listado de productos -->
-  <div>
-    <ul class="list-group">
-      <li *ngFor="let temp of productos" class="list-group-item d-flex justify-content-between align-items-center">
-        <div>{{ temp.nombres }}</div>
-        <div>{{ temp.precio | currency: 'PEN' }}</div>
-        <span class="badge bg-success">{{ temp.stock }}</span>
-        <button type="button" class="btn btn-warning" (click)="addToCart(temp)">Añadir al carrito</button>
-      </li>
-    </ul>
-  </div>
-</div>
+    <div class="col-md-8 bg-light p-4 rounded shadow-sm">
+      <h3 class="text-center text-primary">Productos Disponibles</h3>
+
+      <!-- Campo de búsqueda -->
+      <div class="d-flex mb-4">
+        <input type="text" id="buscaProducto" class="form-control me-3" placeholder="Ingrese nombre del producto"
+          (input)="onInput($event)" />
+      </div>
+
+      <!-- Listado de productos -->
+      <div>
+        <ul class="list-group">
+          <li *ngFor="let temp of productos" class="list-group-item d-flex justify-content-between align-items-center">
+            <div>{{ temp.nombres }}</div>
+            <div>{{ temp.precio | currency: 'PEN' }}</div>
+            <span class="badge bg-success">{{ temp.stock }}</span>
+            <button type="button" class="btn btn-warning" (click)="addToCart(temp)">Añadir al carrito</button>
+          </li>
+        </ul>
+      </div>
+    </div>
 
     <!-- Sección de cliente y mi carrito (30%) -->
-    <div class="col-md-4 bg-dark text-light p-4 rounded shadow-sm">
-      <!-- Sección para cliente-->
-      <h3 class="text-center text-warning">Buscar Cliente</h3>
-      <div class="mb-4">
-        <div class="form-control mb-4">
+    <!-- Esta parte será mi formulario para hacer venta y venta detalle -->
+    
+      <div class="col-md-4 bg-dark text-light p-4 rounded shadow-sm">
+        <!-- Sección para cliente-->
+        <h3 class="text-center text-warning">Buscar Cliente</h3>
+        <div class="mb-4">
+          <div class="form-control mb-4">
             <label for="dni" class="form-label">Ingrese DNI</label>
             <input type="text" id="dni" class="form-control mb-2" placeholder="DNI del cliente" [(ngModel)]="dni">
             <button type="button" class="btn btn-warning" (click)="getByDni()">Buscar</button>
-        </div> 
-        <input type="hidden" id="nombre" class="form-control mb-3" placeholder="Nombre del cliente" [value]="cliente?.id" disabled>
-        <label for="nombre" class="form-label">Nombre</label>
-        <input type="text" id="nombre" class="form-control mb-3" placeholder="Nombre del cliente" [value]="cliente?.nombres" disabled>
-        <label for="apellidos" class="form-label">Apellidos</label>
-        <input type="text" id="apellidos" class="form-control mb-3" placeholder="Apellidos del cliente" [value]="cliente?.apellidos" disabled>
-        <button type="button" class="btn btn-warning w-100" (click)="openClienteModal()">Agregar nuevo cliente</button>
-      </div>
+          </div>
+          <input type="hidden" id="nombre" class="form-control mb-3" placeholder="Nombre del cliente"
+            [value]="cliente?.id" disabled>
+          <label for="nombre" class="form-label">Nombre</label>
+          <input type="text" id="nombre" class="form-control mb-3" placeholder="Nombre del cliente"
+            [value]="cliente?.nombres" disabled>
+          <label for="apellidos" class="form-label">Apellidos</label>
+          <input type="text" id="apellidos" class="form-control mb-3" placeholder="Apellidos del cliente"
+            [value]="cliente?.apellidos" disabled>
+          <button type="button" class="btn btn-warning w-100" (click)="openClienteModal()">Agregar nuevo cliente</button>
+        </div>
 
-      <!-- MI CARRITO -->
-      <h3 class="text-center text-warning">CARRITO</h3>
-      <div>
-        <table class="table table-dark table-striped">
-          <thead>
-            <tr>
-              <th>Nombre</th>
-              <th>Precio</th>
-              <th>Cantidad</th>
-              <th>Total</th>
-              <th>Opción</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr *ngFor="let item of carrito">
-              <td>{{ item.producto.nombres }}</td>
-              <td>{{ item.producto.precio | currency: 'PEN'}}</td>
-              <td><input type="number" [(ngModel)]="item.cantidad" min="1" class="form-control" style="width: 80px;"></td>
-              <td>{{ item.producto.precio * item.cantidad | currency: 'PEN' }}</td>
-              <td><button type="button" class="btn btn-danger" (click)="removeFromCart(item)">Quitar</button></td>
-            </tr>
-          </tbody>
-        </table>
+        <!-- MI CARRITO -->
+        <h3 class="text-center text-warning">CARRITO</h3>
         <div>
-          IMPORTE TOTAL
-          <input class="form-control text-end" type="number" [value]="getImporteTotal()" disabled>
+          <table class="table table-dark table-striped">
+            <thead>
+              <tr>
+                <th>Nombre</th>
+                <th>Precio</th>
+                <th>Cantidad</th>
+                <th>Total</th>
+                <th>Opción</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let item of carrito">
+                <td>{{ item.producto.nombres }}</td>
+                <td>{{ item.producto.precio | currency: 'PEN'}}</td>
+                <td><input type="number" [(ngModel)]="item.cantidad" min="1" class="form-control" style="width: 80px;">
+                </td>
+                <td>{{ item.producto.precio * item.cantidad | currency: 'PEN' }}</td>
+                <td><button type="button" class="btn btn-danger" (click)="removeFromCart(item)">Quitar</button></td>
+              </tr>
+            </tbody>
+          </table>
+          <div>
+            IMPORTE TOTAL
+            <input class="form-control text-end" type="number" [value]="getImporteTotal()" disabled>
+          </div>
+          <hr>
+          <div>
+            <button type="submit" class="btn btn-warning w-100" (click)="generarVenta()">Realizar venta</button>
+          </div>
         </div>
-        <br>
-        <div>
-          <button type="button" class="btn btn-warning w-100" (click)="generarVenta()">Realizar venta</button> 
-        </div>
-        
+
       </div>
-      <hr>
-    </div>
   </div> <!-- End of row -->
 </div> <!-- End of container -->

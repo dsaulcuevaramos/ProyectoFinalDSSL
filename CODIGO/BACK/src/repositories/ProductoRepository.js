@@ -6,6 +6,12 @@ class ProductoRepository extends CrudRepository {
         super(Producto);
     }
 
+    async actualizaStock(id, stock){
+        await this.pool.query(`UPDATE ${this.tableName} 
+        SET stock=? WHERE id=?`, [stock,id]);          
+        return this.findById(id);
+    }
+
     async findByNombre(nombres){
         const [rows] = await this.pool.query(`SELECT * FROM ${this.tableName} 
            WHERE nombres LIKE CONCAT(?,'%')`, [nombres]);          

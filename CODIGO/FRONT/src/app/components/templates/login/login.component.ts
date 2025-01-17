@@ -30,28 +30,27 @@ export class LoginComponent implements OnInit{
     }
 
 
-    login(){
+    login() {
       if (this.usuarioForm.valid) {
         this.usuarioService.getForLogin(this.usuarioForm.value.username).subscribe(
-          (response) =>{
-            if(this.usuarioForm.value.password == response.password){
-              this.autenticacionService.setCurrentUser(response);
+          (response) => {
+            if (this.usuarioForm.value.password == response.password) {
+              this.autenticacionService.setCurrentUser(response); // Guardamos el usuario con su rol
               this.usuarioForm.reset();
               this.router.navigate(['home']);
-            }else{
+            } else {
               alert('Contraseña Incorrecta');
-              this.usuarioForm.controls['contraseña'].reset();
+              this.usuarioForm.controls['password'].reset();
             }
           },
           (error) => {
-            alert('ocurrio un error');
+            alert('Ocurrió un error');
             this.usuarioForm.reset();
           }
         )
-      }else {
+      } else {
         alert('Por favor, complete todos los campos');
       }
-      
     }
 
 }

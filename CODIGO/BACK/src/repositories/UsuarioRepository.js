@@ -13,8 +13,11 @@ class UsuarioRepository extends CrudRepository {
     }
 
     async getForLogin(username){
-        const [rows] = await this.pool.query(`SELECT * FROM ${this.tableName} 
-           WHERE username = ?`, [username]);          
+        const [rows] = await this.pool.query(`
+            SELECT u.*, e.rol
+            FROM ${this.tableName} u
+            INNER JOIN empleado e ON u.empleado = e.id
+            WHERE u.username = ?`, [username]);      
         return rows[0];
     }
 

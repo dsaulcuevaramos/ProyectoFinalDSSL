@@ -19,6 +19,10 @@ class ProductoService{
         return ProductoRepository.update(id, data);
     }
 
+    updateStock(id,stock){
+        return ProductoRepository.actualizaStock(id,stock);
+    }
+
     delete(id){
         return ProductoRepository.delete(id);
     } 

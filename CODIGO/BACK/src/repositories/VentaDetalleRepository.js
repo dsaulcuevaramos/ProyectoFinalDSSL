@@ -1,9 +1,9 @@
 const CrudRepository = require('../lib/CrudRepository');
 const VentaDetalle = require('../models/VentaDetalle');
 
-class Venta_DetallerRepository extends CrudRepository {
+class VentaDetalleRepository extends CrudRepository {
     constructor(){
         super(VentaDetalle);
     }
 }
-module.exports = new Venta_DetallerRepository();
+module.exports = new VentaDetalleRepository();

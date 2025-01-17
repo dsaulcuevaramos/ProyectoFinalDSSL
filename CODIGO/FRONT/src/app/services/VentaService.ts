@@ -1,18 +1,18 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Producto } from '../models/Producto.model';
+import { Venta } from '../models/Venta.model';
 import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
-export class ProductoService {
+export class VentaService {
 
-  private apiUrl = 'http://localhost:3000/api/productos';
+  private apiUrl = 'http://localhost:3000/api/ventas';
   
   constructor(private http: HttpClient) { }
-  get(): Observable<Producto[]> {
-    return this.http.get<Producto[]>(this.apiUrl);
+  get(): Observable<Venta[]> {
+    return this.http.get<Venta[]>(this.apiUrl);
   }
   create(data: any): Observable<any> {
     return this.http.post(this.apiUrl, data);
@@ -20,13 +20,8 @@ export class ProductoService {
   update(id: number, data: any): Observable<any> {
     return this.http.put(`${this.apiUrl}/${id}`, data);
   }
-  updateStock(id: number, newStock: Number): Observable<any> {
-    return this.http.put(`${this.apiUrl}/stock/${id}`, { stock: newStock });
-  }
+
   delete(id: number): Observable<any> {
     return this.http.delete(`${this.apiUrl}/${id}`);
-  }
-  getByNombre(nombre:string): Observable<Producto[]> {
-    return this.http.get<Producto[]>(`${this.apiUrl}/producto/${nombre}`);
   }
 }

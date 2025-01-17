@@ -3,12 +3,13 @@ class VentaDetalle{
 
     static tableName = "venta_detalle";
 
-    constructor(id, cantidad, preciounidad, total, idproducto){
+    constructor(id, cantidad, preciounidad, total, venta,roducto){
         this.id = id;
         this.cantidad = cantidad;
         this.preciounidad = preciounidad;
         this.total = total;
-        this.idproducto = idproducto;
+        this.venta = venta;
+        this.producto = producto;
     }
 
 }

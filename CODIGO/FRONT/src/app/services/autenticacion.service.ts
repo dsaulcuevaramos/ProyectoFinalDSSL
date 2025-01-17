@@ -22,5 +22,4 @@ export class AutenticacionService {
   clearCurrentUser(): void {
     this.currentUser.next(null); // Limpia el usuario autenticado
   }
-
 }

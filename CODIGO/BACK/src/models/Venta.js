@@ -4,11 +4,11 @@ class Venta{
 
     static tableName = "venta";
 
-    constructor(id, fecha,total,idcliente){
+    constructor(id, fecha,importetotal,cliente){
         this.id = id;
         this.fecha = fecha;
-        this.total = total;
-        this.idcliente = idcliente;
+        this.importetotal = importetotal;
+        this.cliente = cliente;
     }
 
 }
