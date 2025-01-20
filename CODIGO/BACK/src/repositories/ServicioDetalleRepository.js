@@ -5,5 +5,6 @@ class ServicioDetallerRepository extends CrudRepository {
     constructor(){
         super(ServicioDetalle);
     }
+    
 }
 module.exports = new ServicioDetallerRepository();

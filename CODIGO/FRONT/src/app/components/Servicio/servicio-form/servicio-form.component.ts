@@ -17,7 +17,7 @@ export class ServicioFormComponent {
   submitted = false;
   servicio: Servicio | undefined;
   isEditMode = false;
-  usuarios: Usuario[]  = [] ;
+  mecanicos: Usuario[]  = [] ;
 
   constructor(
     private fb: FormBuilder,
@@ -47,12 +47,11 @@ export class ServicioFormComponent {
     }
   }
 
-  
-
   loadRols(){
-    this.usuarioService.get().subscribe(
-      (response) => this.usuarios = response,
+    this.usuarioService.getMecanicos().subscribe(
+      (response) => this.mecanicos = response,
       (error) => console.error("error en el loading", error)
     )
-  }
+  } 
+
 }

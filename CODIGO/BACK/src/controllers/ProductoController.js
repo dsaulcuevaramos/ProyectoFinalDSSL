@@ -34,15 +34,15 @@ router.put('/:id', async (req, res) => {
 })
 
 router.put('/stock/:id', async (req, res) => {
-    const {stock} = req.body;
-    const update = await ProductoService.update(
-        req.params.id,stock);
-    if (update)
+    const { stock } = req.body;
+    const update = await ProductoService.updateStock(req.params.id, stock);
+    
+    if (update) {
         res.status(201).json(update);
-    else
-        res.status(404).json({ message: 'not updated' });
-})
-
+    } else {
+        res.status(404).json({ message: 'No se actualizó el stock' });
+    }
+});
 router.delete('/:id', async(req,res)=>{
     const deleted = await ProductoService.delete(req.params.id);
     if(deleted){

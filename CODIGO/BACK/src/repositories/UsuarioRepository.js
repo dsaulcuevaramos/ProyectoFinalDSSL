@@ -21,5 +21,15 @@ class UsuarioRepository extends CrudRepository {
         return rows[0];
     }
 
+    
+    async getMecanicos(id){
+        const [rows] = await this.pool.query(`
+            SELECT u.*, e.rol
+            FROM ${this.tableName} u
+            INNER JOIN empleado e ON u.empleado = e.id
+            WHERE e.rol = ?`, id);  
+        return rows;
+    }
+
 }
 module.exports = new UsuarioRepository();

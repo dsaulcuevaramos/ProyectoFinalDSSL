@@ -24,4 +24,8 @@ export class VehiculoService {
     return this.http.delete(`${this.apiUrl}/${id}`);
   }
 
+  getByPlaca(placa:string): Observable<Vehiculo> {
+    return this.http.get<Vehiculo>(`${this.apiUrl}/placa/${placa}`);
+  }   
+
 }

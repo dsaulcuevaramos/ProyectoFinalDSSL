@@ -3,7 +3,7 @@ export interface VentaDetalle{
     id:number;
     cantidad:number;
     preciounidad:number;
-    total: number;
+    costototal: number;
     venta:number;
     producto:number;
 }

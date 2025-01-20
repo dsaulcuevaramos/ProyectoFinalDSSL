@@ -16,6 +16,15 @@ router.get('/:id', async (req, res) => {
         res.status(404).json({ message: 'not found' });
     }
 })
+router.get('/placa/:dni', async (req, res) => {
+    const response = await VehiculoService.getByPlaca(req.params.dni);
+    if (response) {
+        res.json(response);
+    }
+    else {
+        res.status(404).json({ message: 'not found' });
+    }
+})
 router.post('/', async (req, res) => {
     const create = await VehiculoService.create(req.body);
     if (create)

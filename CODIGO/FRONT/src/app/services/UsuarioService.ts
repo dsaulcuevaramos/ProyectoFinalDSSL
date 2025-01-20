@@ -29,5 +29,8 @@ export class UsuarioService {
   getForLogin(username:string): Observable<Usuario> {
     return this.http.get<Usuario>(`${this.apiUrl}/login/${username}`);
   }
+  getMecanicos(): Observable<Usuario[]> {
+    return this.http.get<Usuario[]>(`${this.apiUrl}/mecanicos/${3}`); 
+  }
 
 }

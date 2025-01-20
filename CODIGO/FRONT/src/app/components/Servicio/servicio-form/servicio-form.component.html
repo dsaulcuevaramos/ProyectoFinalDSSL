@@ -24,9 +24,9 @@
         <div class="mb-3">
             <label for="empleado" class="form-label">usuario</label>
             <div>
-              <select id="usuario" [ngClass]="{'is-invalid': submitted && f['usuario'].errors}" formControlName="usuario">
-                <option *ngFor="let temp of usuarios" [ngValue]="temp.id">{{temp.username}}</option>
-              </select>
+                <select id="usuario" [ngClass]="{'is-invalid': submitted && f['usuario'].errors}" formControlName="usuario">
+                    <option *ngFor="let temp of mecanicos" [ngValue]="temp.id">{{temp.username}}</option>
+                </select>
             </div>
             <div *ngIf="submitted && f['empleado'].errors" class="invalid-feedback">
               El usuario es requerido.

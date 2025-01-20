@@ -26,6 +26,7 @@ import { VehiculoFormComponent } from './components/Vehiculo/vehiculo-form/vehic
 import { UsuarioListComponent } from './components/Usuario/usuario-list/usuario-list.component';
 import { UsuarioFormComponent } from './components/Usuario/usuario-form/usuario-form.component';
 import { CarritoComponent } from './components/Venta/carrito/carrito.component';
+import { ReporteComponent } from './components/templates/reporte/reporte.component';
 
 
 @NgModule({
@@ -46,7 +47,8 @@ import { CarritoComponent } from './components/Venta/carrito/carrito.component';
     VehiculoFormComponent,
     UsuarioListComponent,
     UsuarioFormComponent,
-    CarritoComponent
+    CarritoComponent,
+    ReporteComponent
   ],
   imports: [
     BrowserModule,

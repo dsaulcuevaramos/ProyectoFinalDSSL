@@ -4,7 +4,7 @@ const ProductoRepository = require('../repositories/ProductoRepository');
 class ProductoService{
 
     getAll(){
-        return ProductoRepository.findAll();
+        return ProductoRepository.findAllOrden();
     }
 
     getrById(id){

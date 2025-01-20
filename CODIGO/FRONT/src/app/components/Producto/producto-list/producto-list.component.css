@@ -1,0 +1,12 @@
+.text-danger {
+    color: #e74c3c; /* Rojo */
+    font-weight: bold;
+}
+.text-warning {
+    color: #f39c12; /* Naranja */
+    font-weight: bold;
+}
+.text-success {
+    color: #2ecc71; /* Verde */
+    font-weight: bold;
+}

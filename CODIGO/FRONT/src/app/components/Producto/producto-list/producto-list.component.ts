@@ -34,9 +34,34 @@ export class ProductoListComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.load();
+    this.load('');
   }
 
+  //listar
+  load(busqueda: string | null): void {
+    if (!busqueda) {
+      this.productoService.get().subscribe(
+        (response) => {
+          this.productos = response;
+        },
+        (error) => console.error('Error al cargar productos', error)
+      );
+    } else {
+      this.productoService.getByNombre(busqueda).subscribe(
+        (response) => {
+          // Filtramos los productos que tienen stock
+          this.productos = response;
+        },
+        (error) => console.error('Error al cargar productos por nombre', error)
+      );
+    }
+  }
+  onInput(event: Event): void {
+    const input = event.target as HTMLInputElement;  // Aserción de tipo
+    this.load(input.value);
+  }
+
+  
   //abre el modal del form component
   openModal(producto?: Producto) {
     const modalRef = this.modalService.open(ProductoFormComponent);
@@ -52,14 +77,14 @@ export class ProductoListComponent implements OnInit {
           //actualiza si hay datos
           this.productoService.update(result.id, result).subscribe(
             () => {
-              this.load();
+              this.load('');
               this.resetFrom();
             })
         } else {
           //agregará
           this.productoService.create(result).subscribe(
             () => {
-              this.load();
+              this.load('');
               this.resetFrom();
             }
           )
@@ -73,13 +98,6 @@ export class ProductoListComponent implements OnInit {
     this.productoForm.reset();
   }
 
-  //listar
-  load(): void {
-    this.productoService.get().subscribe(
-      (response) => this.productos = response,
-      (error) => console.error("error en el loading", error)
-    )
-  }
 
   //editar
   edit(producto: any) {
@@ -95,7 +113,7 @@ export class ProductoListComponent implements OnInit {
     const confirmacion = confirm("¿estas seguro?");
     if (confirmacion) {
       this.productoService.delete(id).subscribe(() => {
-        this.load();
+        this.load('');
       })
     }
   }
@@ -108,19 +126,17 @@ export class ProductoListComponent implements OnInit {
       this.productoService.update(this.currentId,
         this.productoForm).subscribe(
           () => {
-            this.load();
+            this.load('');
             this.resetFrom();
           }
         )
     } else {
       this.productoService.create(this.productoForm.value).subscribe(
         () => {
-          this.load();
+          this.load('');
           this.resetFrom();
         }
       )
     }
   }
-
-
 }

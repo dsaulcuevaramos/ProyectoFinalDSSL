@@ -1,7 +1,7 @@
 
 export interface Rol{
     id:number;
-    nombres:string;
+    nombre:string;
     descripcion:string;
     sueldo:number;
 }

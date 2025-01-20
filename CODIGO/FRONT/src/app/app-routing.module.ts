@@ -10,6 +10,7 @@ import { UsuarioListComponent } from "./components/Usuario/usuario-list/usuario-
 import { CarritoComponent } from "./components/Venta/carrito/carrito.component";
 import { HomeComponent } from "./components/templates/home/home.component";
 import { LoginComponent } from "./components/templates/login/login.component"; 
+import { ReporteComponent } from "./components/templates/reporte/reporte.component"; 
 
 const routes: Routes = [
     //Login
@@ -38,8 +39,10 @@ const routes: Routes = [
     { path:'',redirectTo:'/usuario', pathMatch:'full'},
     //rutear servicio
     { path: 'carrito', component: CarritoComponent },
-    { path:'',redirectTo:'/carrito', pathMatch:'full'}
-    
+    { path:'',redirectTo:'/carrito', pathMatch:'full'},
+    //rutear reporte
+    { path: 'reporte', component: ReporteComponent },
+    { path:'',redirectTo:'/reporte', pathMatch:'full'}
 ]
 
 @NgModule({

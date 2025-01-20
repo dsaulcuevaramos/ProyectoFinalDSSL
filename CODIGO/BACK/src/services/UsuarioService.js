@@ -6,7 +6,7 @@ class UsuarioService{
         return UsuarioRepository.findAll();
     }
 
-    getrById(id){
+    getById(id){
         return UsuarioRepository.findById(id);
     }
 
@@ -28,6 +28,10 @@ class UsuarioService{
 
     getForLogin(username){
         return UsuarioRepository.getForLogin(username);
+    }
+
+    getMecanicos(id){
+        return UsuarioRepository.getMecanicos(id);
     }
 
 }

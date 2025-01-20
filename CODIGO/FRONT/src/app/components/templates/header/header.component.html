@@ -16,6 +16,14 @@
 
   <div class="collapse navbar-collapse" id="navbarNav">
     <ul class="navbar-nav ms-auto">
+      <!-- Productos solo visible para el empleado -->
+      <li class="nav-item">
+        <a class="nav-link text-light" routerLink="/carrito" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Productos Disponibles</a>
+      </li>
+      <!-- Servicio solo visible para el Admin -->
+      <li class="nav-item">
+        <a class="nav-link text-light" routerLink="/servicio" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Servicios Activos</a>
+      </li>
       <!-- Productos solo visible para el Admin -->
       <li class="nav-item" *ngIf="isAdmin">
         <a class="nav-link text-light" routerLink="/producto" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Productos</a>
@@ -35,6 +43,9 @@
       <!-- Usuario solo visible para el Admin -->
       <li class="nav-item" *ngIf="isAdmin">
         <a class="nav-link text-light" routerLink="/usuario" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Usuario</a>
+      </li>
+      <li class="nav-item" *ngIf="isAdmin">
+        <a class="nav-link text-light" routerLink="/reporte" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Reportes</a>
       </li>
       <!-- Home visible para todos los usuarios -->
       <li class="nav-item">

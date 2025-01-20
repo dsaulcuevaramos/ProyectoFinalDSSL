@@ -34,7 +34,7 @@ app.use('/api/roles', RolController);
 app.use('/api/empleados', EmpleadoController);
 app.use('/api/productos', ProductoController);
 app.use('/api/clientes', ClienteController);
-app.use('/api/usuarios', UsuarioController);
+app.use('/api/usuarios', UsuarioController);    
 app.use('/api/vehiculos', VehiculoController);
 app.use('/api/servicios', ServicioController);
 app.use('/api/ventas', VentaController);

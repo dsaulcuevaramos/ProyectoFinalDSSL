@@ -22,6 +22,10 @@ class VehiculoService{
         return VehiculoRepository.delete(id);
     } 
 
+    getByPlaca(placa){
+        return VehiculoRepository.getByPlaca(placa);
+    }
+
 }
 
 module.exports = new VehiculoService();

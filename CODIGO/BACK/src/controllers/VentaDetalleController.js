@@ -7,8 +7,8 @@ router.get('/', async (req, res) => {
     res.json(users);
 })
 
-router.get('/:id', async (req, res) => {
-    const response = await VentaDetalleService.getById(req.params.id);
+router.get('/:venta', async (req, res) => {
+    const response = await VentaDetalleService.getAllVenta(req.params.id);
     if (response) {
         res.json(response);
     }

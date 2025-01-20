@@ -8,7 +8,7 @@ class ClienteRepository extends CrudRepository {
 
     async getByDni(dni){
         const [rows] = await this.pool.query(`SELECT * FROM ${this.tableName} 
-           WHERE dni = ?`, [dni]);          
+           WHERE dni  LIKE CONCAT(?,'%')`, [dni]);          
         return rows[0];
     }
 

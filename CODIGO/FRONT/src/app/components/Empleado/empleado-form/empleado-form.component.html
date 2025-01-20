@@ -48,22 +48,14 @@
             <label for="rol" class="form-label">Rol</label>
             <div>
               <select id="rol" [ngClass]="{'is-invalid': submitted && f['rol'].errors}" formControlName="rol">
-                <option *ngFor="let temp of rols" [ngValue]="temp.id">{{temp.nombres}}</option>
+                <option *ngFor="let temp of rols" [ngValue]="temp.id">{{temp.nombre}}</option>
               </select>
             </div>
             <div *ngIf="submitted && f['rol'].errors" class="invalid-feedback">
               El rol es requerido.
             </div>
           </div>
-        <!--<div class="mb-3">
-            <label for="apellido" class="form-label">correo</label>
-            <input type="apellido" class="form-control" id="apellido" formControlName="apellido"
-                [ngClass]="{'is-invalid': submitted && f['apellido'].errors}">
-            <div *ngIf="submitted && f['apellido'].errors" class="invalid-feedback">
-                <div *ngIf="f['apellido'].errors['required']">apellido is required</div>
-                <div *ngIf="f['apellido'].errors['apellido']">Invalid apellido format</div>
-            </div>
-        </div>-->
+
         
         <div class="modal-footer">
             <button type="button" class="btn btn-secondary" (click)="activeModal.dismiss()">Cancel</button>

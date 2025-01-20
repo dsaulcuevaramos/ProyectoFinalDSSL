@@ -1,0 +1,82 @@
+<app-header></app-header>
+<br>
+<div class="container">
+    <!-- Filtro de fecha -->
+    <div class="mb-4">
+        <label for="date" class="form-label">Buscar por fecha</label>
+        <input type="date" id="date" [(ngModel)]="date" (change)="filterByDate()" class="form-control">
+    </div>
+    
+    <hr>
+
+    <!-- Contenedor para las dos tablas lado a lado -->
+    <div class="row">
+        <!-- Tabla de ventas (50% del ancho) -->
+        <div class="col-md-6">
+            <h3 class="text-center text-warning">Ventas</h3>
+            <table class="table table-dark table-striped">
+                <thead>
+                    <tr>
+                        <th>Venta</th>
+                        <th>Cantidad</th>
+                        <th>Costo</th>
+                        <th>Ver más</th>
+                    </tr>
+                </thead>
+                <tbody class="table table-light">
+                    <tr *ngFor="let item of ventas">
+                        <td>{{ item.id }}</td>
+                        <td>{{ item.fecha | date }}</td>
+                        <td>{{ item.importetotal | currency: 'PEN' }}</td>
+                        <td><button type="button" class="btn btn-danger" (click)="loadVentasDetalles(item.id)">Ver más</button></td>
+                    </tr>
+                    <tr *ngIf="ventasDetalle.length > 0">
+                        <td colspan="4">
+                            <div> 
+                                <strong>Detalles de la venta:</strong>
+                                <ul>
+                                    <li *ngFor="let detalle of ventasDetalle">
+                                        <span>Cantidad: {{ detalle.cantidad }}</span> 
+                                        <span>Costo: {{ detalle.preciounidad | currency: 'PEN' }}</span>
+                                        <span>Producto: {{ detalle.productonombre }}</span>
+                                    </li>          
+                                </ul>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="mb-3">
+                <strong>Importe total de ventas:</strong>
+                <input type="text" id="importeventa" class="form-control" value="{{ importeventa }}" disabled>
+            </div>
+        </div>
+
+        <!-- Tabla de servicios (50% del ancho) -->
+        <div class="col-md-6">
+            <h3 class="text-center text-warning">Servicios</h3>
+            <table class="table table-dark table-striped">
+                <thead>
+                    <tr>
+                        <th>Servicio</th>
+                        <th>Cantidad</th>
+                        <th>Costo</th>
+                    </tr>
+                </thead>
+                <tbody class="table table-light">
+                    <tr *ngFor="let temp of serviciosDetalle">
+                        <td>{{ temp.id }}</td>
+                        <td>{{ temp.fecha | date }}</td>
+                        <td>{{ temp.costototal | currency: 'PEN' }}</td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="mb-3">
+                <strong>Importe total de servicios:</strong>
+                <input type="text" id="importeservicio" class="form-control" value="{{ importeservicio }}" disabled>
+            </div>
+        </div>
+    </div>
+    
+    <hr>
+</div>

@@ -11,8 +11,8 @@ export class VentaDetalleService {
   private apiUrl = 'http://localhost:3000/api/venta_detalle';
   
   constructor(private http: HttpClient) { }
-  get(): Observable<VentaDetalle[]> {
-    return this.http.get<VentaDetalle[]>(this.apiUrl);
+  get(venta:number): Observable<any[]> {
+    return this.http.get<any[]>(`${this.apiUrl}/${venta}`);
   }
   create(data: any): Observable<any> {
     return this.http.post(this.apiUrl, data);

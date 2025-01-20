@@ -43,27 +43,26 @@ export class CarritoComponent implements OnInit{
     if (!busqueda) {
       this.productoService.get().subscribe(
         (response) => {
-          this.productos = response;
+          // Filtramos los productos que tienen stock
+          this.productos = response.filter(producto => producto.stock > 0);
         },
         (error) => console.error('Error al cargar productos', error)
       );
     } else {
       this.productoService.getByNombre(busqueda).subscribe(
         (response) => {
-          this.productos = response;
+          // Filtramos los productos que tienen stock
+          this.productos = response.filter(producto => producto.stock > 0);
         },
         (error) => console.error('Error al cargar productos por nombre', error)
       );
     }
   }
-
   
   onInput(event: Event): void {
     const input = event.target as HTMLInputElement;  // Aserción de tipo
     this.loadProductos(input.value);
   }
-
-
 
   addToCart(producto: Producto): void {
     const existingProduct = this.carrito.find(item => item.producto.id === producto.id);
@@ -129,57 +128,67 @@ export class CarritoComponent implements OnInit{
   }
 }
 
-  // Método para generar la venta
-  generarVenta(): void {
-    // Verificar que haya un cliente y productos en el carrito
-    if (!this.cliente) {
-      alert('Debe seleccionar un cliente');
-      return;
-    }
 
-    if (this.carrito.length === 0) {
-      alert('No hay productos en el carrito');
-      return;
-    }
-
-    // Crear la venta con los datos del formulario
-    const ventaData = {
-      fecha: new Date(),
-      importeTotal: this.getImporteTotal(),
-      cliente: this.cliente.id
-    };
-
-    // Llamamos al servicio para crear la venta
-    this.ventaService.create(ventaData).subscribe(
-      (response) => {
-        const idVenta = response.idVenta; // Obtener el id de la venta
-        console.log(idVenta);
-        // Crear los detalles de la venta (productos del carrito)
-        const detalles = this.carrito.map(item => ({
-          cantidad: item.cantidad,
-          precioUnidad: item.producto.precio,
-          total: item.producto.precio * item.cantidad,
-          venta: idVenta,
-          producto: item.producto.id,
-        }));
-
-        // Crear los detalles en la base de datos
-        this.ventaDetalleService.create(detalles).subscribe(
-          () => {
-            alert('Venta realizada con éxito');
-            this.updateStockProductos();//actualiza stock
-            this.clearCart();
-          },
-          (error) => {
-            console.error('Error al crear los detalles de la venta', error);
-          }
-        );
-      },
-      (error) => {
-        console.error('Error al crear la venta', error);
-      }
-    );
+generarVenta(): void {
+  // Verificar que haya un cliente y productos en el carrito
+  if (!this.cliente) {
+    alert('Debe seleccionar un cliente');
+    return;
   }
+
+  if (this.carrito.length === 0) {
+    alert('No hay productos en el carrito');
+    return;
+  }
+
+  // Crear la venta con los datos del formulario
+  const ventaData = {
+    fecha: new Date(),
+    importeTotal: this.getImporteTotal(),
+    cliente: this.cliente.id
+  };
+
+  // Llamamos al servicio para crear la venta
+  this.ventaService.create(ventaData).subscribe(
+    (response) => {
+      const idVenta = response.id;  // Obtener el id de la venta creada
+      console.log('Venta creada con ID:', idVenta);
+
+      // Ahora que tenemos el idVenta, podemos proceder a crear los detalles
+      this.crearDetallesVenta(idVenta);
+    },
+    (error) => {
+      console.error('Error al crear la venta', error);
+    }
+  );
+
+  this.loadProductos('');  // Limpiar los productos (opcional)
+}
+
+crearDetallesVenta(idVenta: number): void {
+  // Crear los detalles de la venta (productos del carrito)
+  const detalles = this.carrito.map(item => ({
+    cantidad: item.cantidad,
+    precioUnidad: item.producto.precio,
+    total: item.producto.precio * item.cantidad,
+    venta: idVenta,  // Asociar el id de la venta
+    producto: item.producto.id,  // Producto ID de la venta
+  }));
+
+  console.log('Detalles a enviar:', detalles);  // Verifica que todos los detalles estén correctos
+
+  // Llamar al servicio para crear los detalles en la base de datos
+  this.ventaDetalleService.create(detalles).subscribe(
+    () => {
+      alert('Venta realizada con éxito');
+      this.updateStockProductos();  // Actualiza el stock de los productos
+      this.clearCart();  // Limpiar el carrito
+    },
+    (error) => {
+      console.error('Error al crear los detalles de la venta', error);
+    }
+  );
+}
 
   updateStockProductos(): void {
     this.carrito.forEach(item => {
@@ -195,6 +204,7 @@ export class CarritoComponent implements OnInit{
         }
       );
     });
+
   }
   // Limpiar el carrito después de la venta
   clearCart(): void {
