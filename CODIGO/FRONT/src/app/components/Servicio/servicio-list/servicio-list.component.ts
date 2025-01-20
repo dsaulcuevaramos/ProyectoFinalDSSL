@@ -145,10 +145,9 @@ export class ServicioListComponent implements OnInit{
   //para servicio detalle
     servicio_detalle: any[] = []
     addToServicio(servicio: Servicio): void {
-      // Verificar si el producto ya está en el carrito
+      // verifica si ya esta anotado
       const existingProduct = this.servicio_detalle.find(item => item.servicio.id === servicio.id);
       if (!existingProduct) {
-        // Si el producto no está en el carrito, lo agregamos con cantidad inicial de 1
         this.servicio_detalle.push({servicio});
       }
     }
@@ -171,7 +170,7 @@ export class ServicioListComponent implements OnInit{
           },
           (error) => {
             console.error("Error al buscar cliente:", error);
-            this.cliente = undefined // Reseteamos el cliente si ocurre un error
+            this.cliente = undefined
           }
         );
       } else {
@@ -196,8 +195,6 @@ export class ServicioListComponent implements OnInit{
       })
     }
 
-    //formulario vehiculo
-    //formulario de cliente
     openVehiculoModal() {
       const modalRef = this.modalService.open(VehiculoFormComponent);
       modalRef.result.then((result) => {
@@ -215,32 +212,27 @@ export class ServicioListComponent implements OnInit{
 
 
     registrarServicio(): void {
-      // Verificar que haya un vehiculo seleccionado
       if (!this.vehiculo) {
         alert('Debe seleccionar un vehículo');
         return;
       }
-    
-      // Verificar que el carrito no esté vacío
       if (this.servicio_detalle.length === 0) {
         alert('No hay servicios en el carrito');
         return;
       }
-
-      // Crear los objetos de detalle del servicio para cada servicio en el carrito
+      //aqui va a crear el detalle de servicio
       const servicioDataDetalle = this.servicio_detalle.map(item => ({
-        servicio: item.servicio.id, // ID del servicio
-        vehiculo: this.vehiculo?.id,  // ID del vehículo
-        fecha: new Date(),              // Fecha actual
-        costototal: item.servicio.costo, // Costo de cada servicio individual (puedes cambiarlo si necesitas el costo total)     
+        servicio: item.servicio.id, 
+        vehiculo: this.vehiculo?.id,  
+        fecha: new Date(),             // ojto funcion de fecha
+        costototal: item.servicio.costo,   
       }));
     
-      // Llamamos al servicio para crear los detalles de servicio (masivo)
+      // Llamamos al servicio para crear los detalles de servicio masivo de los masivos
       this.servicioDetalleService.create(servicioDataDetalle).subscribe(
         () => {
-          // Limpiar el carrito después de guardar los servicios
           alert('Servicios registrados con éxito');   
-          this.clearCart();
+          this.clearCart(); //limpia carrito
         },
         (error) => {
           console.error('Error al registrar los servicios', error);

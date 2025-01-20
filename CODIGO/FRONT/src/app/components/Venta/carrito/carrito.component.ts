@@ -112,13 +112,11 @@ export class CarritoComponent implements OnInit{
     }
 
     esDniValido: boolean = true;
-    validaDni(): void {
-      // El DNI debe ser un número de 8 dígitos
+    validaDni(): void { // ojito validacion de dni
       const dniRegex = /^\d{8}$/;
       this.esDniValido = dniRegex.test(this.dni);
     }
   
-    // Función para buscar el cliente por DNI
     getByDni(): void {
       if (this.esDniValido && this.dni) {
         this.clienteService.getByDni(this.dni).subscribe(
@@ -127,7 +125,7 @@ export class CarritoComponent implements OnInit{
           },
           (error) => {
             console.error('Error al buscar cliente:', error);
-            this.cliente = undefined; // Reseteamos el cliente si ocurre un error
+            this.cliente = undefined;
           }
         );
       } else {
@@ -138,12 +136,11 @@ export class CarritoComponent implements OnInit{
 
 
 generarVenta(): void {
-  // Verificar que haya un cliente y productos en el carrito
+  //verificaciones antes de agrregar
   if (!this.cliente) {
     alert('Debe seleccionar un cliente');
     return;
   }
-
   if (this.carrito.length === 0) {
     alert('No hay productos en el carrito');
     return;
@@ -156,13 +153,11 @@ generarVenta(): void {
     cliente: this.cliente.id
   };
 
-  // Llamamos al servicio para crear la venta
   this.ventaService.create(ventaData).subscribe(
     (response) => {
       const idVenta = response.id;  // Obtener el id de la venta creada
       console.log('Venta creada con ID:', idVenta);
 
-      // Ahora que tenemos el idVenta, podemos proceder a crear los detalles
       this.crearDetallesVenta(idVenta);
     },
     (error) => {
@@ -170,11 +165,10 @@ generarVenta(): void {
     }
   );
 
-  this.loadProductos('');  // Limpiar los productos (opcional)
+  this.loadProductos('');
 }
 
 crearDetallesVenta(idVenta: number): void {
-  // Crear los detalles de la venta (productos del carrito)
   const detalles = this.carrito.map(item => ({
     cantidad: item.cantidad,
     precioUnidad: item.producto.precio,
@@ -190,7 +184,7 @@ crearDetallesVenta(idVenta: number): void {
     () => {
       alert('Venta realizada con éxito');
       this.updateStockProductos();  // Actualiza el stock de los productos
-      this.clearCart();  // Limpiar el carrito
+      this.limiezaCart();  // Limpiar el carrito
     },
     (error) => {
       console.error('Error al crear los detalles de la venta', error);
@@ -214,8 +208,7 @@ crearDetallesVenta(idVenta: number): void {
     });
 
   }
-  // Limpiar el carrito después de la venta
-  clearCart(): void {
+  limiezaCart(): void {
     this.carrito = [];
   }
 }

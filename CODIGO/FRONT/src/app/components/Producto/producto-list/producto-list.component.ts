@@ -49,7 +49,6 @@ export class ProductoListComponent implements OnInit {
     } else {
       this.productoService.getByNombre(busqueda).subscribe(
         (response) => {
-          // Filtramos los productos que tienen stock
           this.productos = response;
         },
         (error) => console.error('Error al cargar productos por nombre', error)

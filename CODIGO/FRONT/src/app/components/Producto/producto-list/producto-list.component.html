@@ -28,7 +28,7 @@
             <td>{{temp.nombres}}</td>
             <td>{{temp.descripcion}}</td>
             <td>{{temp.precio}}</td>
-            <!-- Cambiar color del stock según cantidad -->
+            <!-- cambair el color logicamente de letra segun stock  -->
             <td [ngClass]="{'text-danger': temp.stock < 5, 'text-warning': temp.stock >= 5 && temp.stock <= 15, 'text-success': temp.stock > 15}">
                 {{temp.stock}}
             </td>
