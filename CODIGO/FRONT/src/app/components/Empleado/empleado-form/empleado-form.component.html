@@ -17,23 +17,20 @@
             <input type="text" class="form-control" id="apellidos" formControlName="apellidos"
                 [ngClass]="{'is-invalid': submitted && f['apellidos'].errors}">
             <div *ngIf="submitted && f['apellidos'].errors" class="invalid-feedback">
-                apellidos is required
+                Apellidos is required
             </div>
         </div>
         <div class="mb-3">
             <label for="dni" class="form-label">dni</label>
-            <input type="text" class="form-control" id="dni" formControlName="dni"
+            <input type="number" class="form-control" id="dni" formControlName="dni"
                 [ngClass]="{'is-invalid': submitted && f['dni'].errors}">
-            <div *ngIf="submitted && f['dni'].errors" class="invalid-feedback">
-                dni is required
+            
+            <!-- Validaciones para el campo DNI -->
+            <div *ngIf="submitted && f['dni'].hasError('required')" class="invalid-feedback">
+                DNI is required
             </div>
-        </div>
-        <div class="mb-3">
-            <label for="edad" class="form-label">edad</label>
-            <input type="number" class="form-control" id="edad" formControlName="edad"
-                [ngClass]="{'is-invalid': submitted && f['edad'].errors}">
-            <div *ngIf="submitted && f['edad'].errors" class="invalid-feedback">
-                apellidos is required
+            <div *ngIf="submitted && f['dni'].hasError('pattern')" class="invalid-feedback">
+                DNI must be exactly 8 digits
             </div>
         </div>
         <div class="mb-3">
@@ -41,22 +38,21 @@
             <input type="text" class="form-control" id="telefono" formControlName="telefono"
                 [ngClass]="{'is-invalid': submitted && f['telefono'].errors}">
             <div *ngIf="submitted && f['telefono'].errors" class="invalid-feedback">
-                telefono is required
+                Teléfono is required
             </div>
         </div>
         <div class="mb-3">
             <label for="rol" class="form-label">Rol</label>
             <div>
-              <select id="rol" [ngClass]="{'is-invalid': submitted && f['rol'].errors}" formControlName="rol">
-                <option *ngFor="let temp of rols" [ngValue]="temp.id">{{temp.nombre}}</option>
-              </select>
+                <select id="rol" [ngClass]="{'is-invalid': submitted && f['rol'].errors}" formControlName="rol">
+                    <option *ngFor="let temp of rols" [ngValue]="temp.id">{{ temp.nombre }}</option>
+                </select>
             </div>
             <div *ngIf="submitted && f['rol'].errors" class="invalid-feedback">
-              El rol es requerido.
+                El rol es requerido.
             </div>
-          </div>
+        </div>
 
-        
         <div class="modal-footer">
             <button type="button" class="btn btn-secondary" (click)="activeModal.dismiss()">Cancel</button>
             <button type="submit" class="btn btn-primary">

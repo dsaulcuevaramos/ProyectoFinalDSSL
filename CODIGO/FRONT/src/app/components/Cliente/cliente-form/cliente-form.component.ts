@@ -18,27 +18,29 @@ export class ClienteFormComponent {
   constructor(
     private fb: FormBuilder,
     public activeModal: NgbActiveModal
-  ){}
+  ) { }
 
-  ngOnInit(){
+  ngOnInit(): void {
     console.log(this.cliente);
+    // Inicializamos el formulario con validaciones
     this.clienteForm = this.fb.group({
       id: [this.cliente?.id],
-      nombres: [this.cliente?.nombres],
-      apellidos: [this.cliente?.apellidos],
-      dni: [this.cliente?.dni],
+      nombres: [this.cliente?.nombres, [Validators.required]],  // Validación: Campo requerido
+      apellidos: [this.cliente?.apellidos, [Validators.required]],  // Validación: Campo requerido
+      dni: [this.cliente?.dni, [Validators.required, Validators.pattern('^[0-9]{8,9}$')]],  // Validación: Campo requerido y patrón de DNI
     });
-  } 
+  }
 
-  //obtener control del componente form
-  get f(){return this.clienteForm.controls;} 
+  // Obtener el control del formulario
+  get f() { return this.clienteForm.controls; }
 
-  //guardar y volver al component list
-  onSubmit(){
+  // Guardar y cerrar el modal
+  onSubmit(): void {
     this.submitted = true;
-    if(this.clienteForm.valid){
+
+    // Si el formulario es válido, se cierra el modal y se envía el valor
+    if (this.clienteForm.valid) {
       this.activeModal.close(this.clienteForm.value);
     }
   }
-
 }

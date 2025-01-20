@@ -111,22 +111,30 @@ export class CarritoComponent implements OnInit{
       })
     }
 
-  // Función para manejar la búsqueda del cliente
-  getByDni(): void {
-  if (this.dni) {
-    this.clienteService.getByDni(this.dni).subscribe(
-      (response) => {
-        this.cliente = response;
-      },
-      (error) => {
-        console.error("Error al buscar cliente:", error);
-        this.cliente = undefined // Reseteamos el cliente si ocurre un error
+    esDniValido: boolean = true;
+    validaDni(): void {
+      // El DNI debe ser un número de 8 dígitos
+      const dniRegex = /^\d{8}$/;
+      this.esDniValido = dniRegex.test(this.dni);
+    }
+  
+    // Función para buscar el cliente por DNI
+    getByDni(): void {
+      if (this.esDniValido && this.dni) {
+        this.clienteService.getByDni(this.dni).subscribe(
+          (response) => {
+            this.cliente = response;
+          },
+          (error) => {
+            console.error('Error al buscar cliente:', error);
+            this.cliente = undefined; // Reseteamos el cliente si ocurre un error
+          }
+        );
+      } else {
+        console.warn('Por favor ingrese un DNI válido');
       }
-    );
-  } else {
-    console.warn('Por favor ingrese un DNI');
-  }
-}
+    }
+  
 
 
 generarVenta(): void {

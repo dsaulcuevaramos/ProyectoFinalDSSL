@@ -6,11 +6,9 @@
     <!-- Sección de productos (60%) -->
     <div class="col-md-7 bg-light p-4 rounded shadow-sm">
       <h3 class="text-center text-primary mb-4">Productos Disponibles</h3>
-
       <!-- Campo de búsqueda -->
       <div class="d-flex mb-4">
-        <input type="text" id="buscaProducto" class="form-control me-3" placeholder="Ingrese nombre del producto"
-          (input)="onInput($event)" />
+        <input type="text" id="buscaProducto" class="form-control me-3" placeholder="Ingrese nombre del producto" (input)="onInput($event)" />
       </div>
 
       <!-- Listado de productos -->
@@ -42,17 +40,17 @@
       <div class="mb-4">
         <div class="form-control mb-4">
           <label for="dni" class="form-label">Ingrese DNI</label>
-          <input type="text" id="dni" class="form-control mb-2" placeholder="DNI del cliente" [(ngModel)]="dni">
-          <button type="button" class="btn btn-warning" (click)="getByDni()">Buscar</button>
+          <input type="text" id="dni" class="form-control mb-2" placeholder="DNI del cliente" [(ngModel)]="dni" (input)="validaDni()" [class.is-invalid]="!esDniValido" />
+          <div *ngIf="!esDniValido" class="invalid-feedback">
+            El DNI debe tener 8 dígitos numéricos.
+          </div>
+          <button type="button" class="btn btn-warning" (click)="getByDni()" [disabled]="!esDniValido">Buscar</button>
         </div>
-        <input type="hidden" id="nombre" class="form-control mb-3" placeholder="Nombre del cliente"
-          [value]="cliente?.id" disabled>
+        <input type="hidden" id="nombre" class="form-control mb-3" placeholder="Nombre del cliente" [value]="cliente?.id" disabled />
         <label for="nombre" class="form-label">Nombre</label>
-        <input type="text" id="nombre" class="form-control mb-3" placeholder="Nombre del cliente"
-          [value]="cliente?.nombres" disabled>
+        <input type="text" id="nombre" class="form-control mb-3" placeholder="Nombre del cliente" [value]="cliente?.nombres" disabled />
         <label for="apellidos" class="form-label">Apellidos</label>
-        <input type="text" id="apellidos" class="form-control mb-3" placeholder="Apellidos del cliente"
-          [value]="cliente?.apellidos" disabled>
+        <input type="text" id="apellidos" class="form-control mb-3" placeholder="Apellidos del cliente" [value]="cliente?.apellidos" disabled />
         <button type="button" class="btn btn-warning w-100" (click)="openClienteModal()">Agregar nuevo cliente</button>
       </div>
 
@@ -74,10 +72,9 @@
               <td>{{ item.producto.nombres }}</td>
               <td>{{ item.producto.precio | currency: 'PEN'}}</td>
               <td>
-                <input type="number" [(ngModel)]="item.cantidad" min="1" class="form-control" style="width: 80px;" disabled>
+                <input type="number" [(ngModel)]="item.cantidad" min="1" class="form-control" style="width: 80px;" disabled />
               </td>
               <td>{{ item.producto.precio * item.cantidad | currency: 'PEN' }}</td>
-              <!-- Asegurarnos de que el botón "Quitar" está visible y clickeable -->
               <td class="text-center">
                 <button type="button" class="btn btn-danger" (click)="removeFromCart(item)">
                   <i class="bi bi-x-circle"></i> Quitar
@@ -88,7 +85,7 @@
         </table>
         <div>
           <strong>IMPORTE TOTAL</strong>
-          <input class="form-control text-end" type="number" [value]="getImporteTotal()" disabled>
+          <input class="form-control text-end" type="number" [value]="getImporteTotal()" disabled />
         </div>
         <div class="mt-4">
           <button type="submit" class="btn btn-warning w-100" (click)="generarVenta()">

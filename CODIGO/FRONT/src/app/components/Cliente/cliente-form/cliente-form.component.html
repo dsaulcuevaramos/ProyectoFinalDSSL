@@ -1,37 +1,49 @@
 <div class="modal-header" style="background-color: #273746; color: #F1C40F;">
-    <h4 class="modal-title">{{ isEditMode ? 'Edit Ciente' : 'Add New Ciente' }}</h4>
+    <h4 class="modal-title">{{ isEditMode ? 'Edit Cliente' : 'Add New Cliente' }}</h4>
     <button type="button" class="btn-close" aria-label="Close" (click)="activeModal.dismiss()"></button>
 </div>
 <div class="modal-body" style="background-color: #F2F3F4;">
     <form [formGroup]="clienteForm" (ngSubmit)="onSubmit()">
+        <!-- Nombres -->
         <div class="mb-3">
             <label for="nombres" class="form-label">Nombres</label>
             <input type="text" class="form-control" id="nombres" formControlName="nombres"
                 [ngClass]="{'is-invalid': submitted && f['nombres'].errors}">
             <div *ngIf="submitted && f['nombres'].errors" class="invalid-feedback">
-                Nombre is required
+                Nombres son requeridos.
             </div>
         </div>
+
+        <!-- Apellidos -->
         <div class="mb-3">
             <label for="apellidos" class="form-label">Apellidos</label>
             <input type="text" class="form-control" id="apellidos" formControlName="apellidos"
                 [ngClass]="{'is-invalid': submitted && f['apellidos'].errors}">
             <div *ngIf="submitted && f['apellidos'].errors" class="invalid-feedback">
-                Precio is required
+                Apellidos son requeridos.
             </div>
         </div>
+
+        <!-- DNI -->
         <div class="mb-3">
-            <label for="dni" class="form-label">Dni</label>
+            <label for="dni" class="form-label">DNI</label>
             <input type="text" class="form-control" id="dni" formControlName="dni"
                 [ngClass]="{'is-invalid': submitted && f['dni'].errors}">
-            <div *ngIf="submitted && f['dni'].errors" class="invalid-feedback">
-                Precio is required
+            <!-- Validación para 'required' -->
+            <div *ngIf="submitted && f['dni'].hasError('required')" class="invalid-feedback">
+                El DNI es requerido.
+            </div>
+            <!-- Validación para 'pattern' -->
+            <div *ngIf="submitted && f['dni'].hasError('pattern')" class="invalid-feedback">
+                El DNI debe tener entre 8 y 9 dígitos numéricos.
             </div>
         </div>
+
+        <!-- Modal Footer -->
         <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" (click)="activeModal.dismiss()">Cancel</button>
+            <button type="button" class="btn btn-secondary" (click)="activeModal.dismiss()">Cancelar</button>
             <button type="submit" class="btn btn-primary">
-                {{ isEditMode ? 'Update Ciente' : 'Save Ciente' }}
+                {{ isEditMode ? 'Actualizar Cliente' : 'Guardar Cliente' }}
             </button>
         </div>
     </form>
